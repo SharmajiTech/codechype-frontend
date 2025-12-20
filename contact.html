@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Codechype</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .page-header-gradient {
+            background: #072f68;
+        }
+    </style>
+    <style>
+    /* Animation Keyframes */
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-in-left {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fade-in-right {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Animation Classes */
+    .animate-fade-in-up {
+        animation: fade-in-up 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in-left {
+        animation: fade-in-left 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in-right {
+        animation: fade-in-right 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    /* Hover Effects */
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Spin Animation */
+    .animate-spin-slow {
+        animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    </style>
+    <style>
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+@keyframes float-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.whatsapp-float {
+  animation: float-bounce 3s ease-in-out infinite;
+}
+</style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <!-- Image Logo for Codechype -->
+                <img src="image/codechypelogo.png" alt="Codechype Logo" class="h-10 w-10 rounded-full object-cover">
+                <span class="text-2xl font-bold text-white">Codechype<span class="text-blue-400">.</span></span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-blue-400 transition-colors duration-300">Home</a>
+                <a href="courses.html" class="hover:text-blue-400 transition-colors duration-300">Courses</a>
+                <a href="about.html" class="hover:text-blue-400 transition-colors duration-300">About Us</a>
+                <a href="contact.html" class="text-blue-400 font-semibold">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105">
+                Enroll Now
+            </a>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-8 text-xl">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 focus:outline-none">
+                <i data-lucide="x" class="w-8 h-8 text-white"></i>
+            </button>
+            <a href="index.html" class="text-white hover:text-blue-400 transition-colors duration-300">Home</a>
+            <a href="courses.html" class="text-white hover:text-blue-400 transition-colors duration-300">Courses</a>
+            <a href="about.html" class="text-white hover:text-blue-400 transition-colors duration-300">About Us</a>
+            <a href="contact.html" class="text-blue-400 font-semibold">Contact</a>
+            <a href="courses.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+                Enroll Now
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header-gradient text-white text-center py-24 px-6">
+            <div class="container mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Get In Touch</h1>
+                <p class="text-lg md:text-xl text-purple-100 max-w-3xl mx-auto">
+                    Have a question about a course or our methodology? We'd love to hear from you.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-20 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800 animate-fade-in-up">Get In Touch With Us</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">We're here to help you start your coding journey. Reach out to us through any of these channels.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover-lift animate-fade-in-left">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h2>
+                        <p class="text-gray-600 mb-6">Fill out the form below and we'll get back to you within 24 hours.</p>
+                        <div id="formAlert"></div>
+                        <form id="contactForm" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <input type="text" id="name" placeholder="Full Name" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                                <input type="email" id="email" placeholder="Email Address" required
+                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                            </div>
+                             <input type="tel" id="phone" placeholder="Mobile Number" required
+                             pattern="[0-9]{10}" maxlength="10"
+                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                            <input type="text" id="subject" placeholder="Subject" required
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300">
+                            <textarea id="message" placeholder="Your Message" rows="5"
+                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"></textarea>
+                            <button style="background-color: #072f68;"  type="submit"
+                                 class="w-full hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                             <span class="flex items-center justify-center">
+                                 <i data-lucide="send" class="w-5 h-5 mr-2"></i>
+                                 Send Message
+                             </span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="space-y-8 animate-fade-in-right">
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover-lift">
+                            <h2 class="text-2xl font-bold mb-6 text-gray-800">Contact Information</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-start p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i data-lucide="map-pin" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 mb-1">Our Location</h4>
+                                        <span class="text-gray-600">Near Manoj medical Rajapur Bodhgaya Gaya, Bihar<br>pin-824231, INDIA</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-start p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i data-lucide="phone" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 mb-1">Phone Support</h4>
+                                        <span class="text-gray-600">+91 8434457228</span>
+                                        <p class="text-sm text-gray-500 mt-1">Mon-Fri: 9AM-6PM IST</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i data-lucide="mail" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 mb-1">Email Support</h4>
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=codechype@gmail.com" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline">codechype@gmail.com</a>
+                                        <p class="text-sm text-gray-500 mt-1">We respond within 24 hours</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Contact Options -->
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover-lift">
+                            <h3 class="text-xl font-bold mb-6 text-gray-800">Quick Contact Options</h3>
+                            <div class="grid grid-cols-1 gap-4">
+                                <a href="https://wa.me/918434457228?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20your%20courses." target="_blank"
+                                   class="flex items-center p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-all duration-300">
+                                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                                        <i data-lucide="message-circle" class="w-5 h-5 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-800">WhatsApp Chat</div>
+                                        <div class="text-sm text-gray-600">Instant response</div>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 ml-auto"></i>
+                                </a>
+                                <a href="tel:+918434457228"
+                                   class="flex items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-all duration-300">
+                                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                                        <i data-lucide="phone" class="w-5 h-5 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-800">Call Us</div>
+                                        <div class="text-sm text-gray-600">Direct support line</div>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="w-5 h-5 text-gray-400 ml-auto"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="mt-16 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover-lift">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 text-center">Visit Our Location</h3>
+                        <div class="rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d459.8434131495055!2d84.99280546099466!3d24.70730804924825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f32d666153923b%3A0x5d29404d496c3cde!2sShivam%20Coaching%20centre!5e0!3m2!1sen!2sin!4v1762705242491!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 px-6 bg-gray-50">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800 animate-fade-in-up">Frequently Asked Questions</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">Find answers to common questions about our courses and services.</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-left">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">What programming languages do you teach?</h3>
+                        <p class="text-gray-600">We offer courses in Python, JavaScript, HTML/CSS, and more. Our curriculum covers both beginner and advanced levels across multiple programming languages and frameworks.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-right">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Do you provide placement assistance?</h3>
+                        <p class="text-gray-600">Yes! We offer comprehensive career support including resume building, interview preparation, mock interviews, and connections with our industry partners for job placements.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-left">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">What is the duration of your courses?</h3>
+                        <p class="text-gray-600">Our courses range from 3 months for beginner programs to 6-12 months for advanced and full-stack development courses. We also offer flexible learning options and project-based learning.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-right">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Do you offer online classes?</h3>
+                        <p class="text-gray-600">Yes, we provide both online and offline classes. Our online platform includes live interactive sessions, recorded lectures, and 24/7 access to learning materials.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-left">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">What are your class timings?</h3>
+                        <p class="text-gray-600">We offer flexible class timings including weekday evenings and weekend batches. Morning sessions are also available for working professionals. Contact us to discuss your preferred schedule.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office Hours & Support -->
+        <section class="py-20 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800 animate-fade-in-up">Office Hours & Support</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">We're committed to supporting your learning journey every step of the way.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center bg-white p-8 rounded-xl shadow-lg hover-lift animate-fade-in-up">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="clock" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Class Timings</h3>
+                        <div class="space-y-2 text-gray-600">
+                            <p><strong>Morning:</strong> 9:00 AM - 12:00 PM</p>
+                            <p><strong>Evening:</strong> 6:00 PM - 9:00 PM</p>
+                            <p><strong>Weekend:</strong> 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center bg-white p-8 rounded-xl shadow-lg hover-lift animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="headphones" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">24/7 Support</h3>
+                        <div class="space-y-2 text-gray-600">
+                            <p>Technical Support</p>
+                            <p>Learning Assistance</p>
+                            <p>WhatsApp: +91 8434457228</p>
+                            <p>Email: codechype@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center bg-white p-8 rounded-xl shadow-lg hover-lift animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Mentorship</h3>
+                        <div class="space-y-2 text-gray-600">
+                            <p>1-on-1 Code Reviews</p>
+                            <p>Career Guidance</p>
+                            <p>Project Assistance</p>
+                            <p>Interview Preparation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-20 px-6 bg-gray-50">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800 animate-fade-in-up">What Our Students Say</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">Hear from our successful students who have transformed their careers through our courses.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-left">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">R</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Ravi Kumar</h4>
+                                <div class="flex text-yellow-400">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"The Python course was exceptional! The instructors are knowledgeable and the hands-on projects helped me land my first job as a developer."</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">P</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Priya Sharma</h4>
+                                <div class="flex text-yellow-400">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"Amazing learning experience! The support team is always available to help. I went from zero coding knowledge to building full-stack applications."</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover-lift animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white font-bold">A</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Amit Singh</h4>
+                                <div class="flex text-yellow-400">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic">"The placement assistance was incredible. Within 2 months of completing the course, I got placed in a reputed company with a great package."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Codechype</h3>
+                    <p class="text-gray-400">Your launchpad into the world of technology, powered by project-based learning. Unlock your coding potential!</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Courses</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Popular Courses</h3>
+                    <ul class="space-y-2">
+                        <li><a href="course-python-beginner.html" class="text-gray-400 hover:text-white">Python Kickstart</a></li>
+                        <li><a href="course-data-analytics.html" class="text-gray-400 hover:text-white">Data Analytics</a></li>
+                        <li><a href="course-ai-ml-beginner.html" class="text-gray-400 hover:text-white">AI & ML Foundations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 Codechype. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const alertBox = document.getElementById("formAlert");
+  alertBox.innerHTML = "";
+  
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    subject: document.getElementById("subject").value,
+    message: document.getElementById("message").value
+  };
+
+  try {
+    const res = await fetch("https://codechype-backend.onrender.com/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      alertBox.innerHTML = `
+        <div class="bg-green-600 text-white p-3 rounded mb-3">
+          ${result.message}
+        </div>`;
+      document.getElementById("contactForm").reset();
+    } else {
+      alertBox.innerHTML = `
+        <div class="bg-red-600 text-white p-3 rounded mb-3">
+          ${result.message}
+        </div>`;
+    }
+
+  } catch (error) {
+    alertBox.innerHTML = `
+      <div class="bg-red-600 text-white p-3 rounded mb-3">
+        Server error. Try again.
+      </div>`;
+  }
+});
+</script>
+
+
+
+    <script>
+        lucide.createIcons();
+
+        // JavaScript for Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918434457228?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20your%20courses."
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+   <!-- WhatsApp SVG icon -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+     <path d="M16.002 3C9.383 3 4 8.383 4 15.002c0 2.636.775 5.101 2.109 7.172L4 29l7.004-2.072A11.9 11.9 0 0016.002 27C22.617 27 28 21.617 28 15.002 28 8.383 22.617 3 16.002 3zm0 22.32a9.287 9.287 0 01-4.73-1.3l-.34-.2-4.158 1.23 1.23-4.047-.22-.34a9.314 9.314 0 01-1.466-5.035c0-5.147 4.186-9.332 9.332-9.332 5.147 0 9.332 4.185 9.332 9.332s-4.185 9.332-9.332 9.332zm5.027-6.972c-.273-.137-1.62-.803-1.872-.893-.252-.093-.435-.137-.616.136-.183.273-.708.894-.867 1.08-.159.183-.32.205-.593.068-.273-.137-1.153-.426-2.197-1.36-.812-.725-1.36-1.62-1.518-1.893-.159-.273-.017-.421.12-.558.123-.123.273-.32.41-.478.136-.159.183-.273.273-.456.09-.183.045-.341-.023-.478-.068-.136-.616-1.483-.845-2.034-.223-.536-.451-.464-.616-.472l-.523-.01c-.182 0-.478.068-.73.341-.252.273-.961.941-.961 2.293s.983 2.66 1.12 2.847c.137.183 1.935 2.958 4.69 4.147.656.283 1.168.452 1.566.58.658.21 1.257.18 1.73.11.527-.078 1.62-.66 1.85-1.298.228-.637.228-1.182.159-1.298-.068-.115-.25-.183-.523-.32z"/>
+   </svg>
+</a>
+
+</body>
+</html>

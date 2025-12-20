@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Codechype</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .page-header-gradient {
+            background: #072f68;
+        }
+    </style>
+    <style>
+    /* Animation Keyframes */
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-in-left {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fade-in-right {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Animation Classes */
+    .animate-fade-in-up {
+        animation: fade-in-up 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in-left {
+        animation: fade-in-left 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    .animate-fade-in-right {
+        animation: fade-in-right 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    /* Hover Effects */
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Spin Animation */
+    .animate-spin-slow {
+        animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    </style>
+    <style>
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+@keyframes float-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.whatsapp-float {
+  animation: float-bounce 3s ease-in-out infinite;
+}
+</style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <!-- Image Logo for Codechype -->
+                <img src="image/codechypelogo.png" alt="Codechype Logo" class="h-10 w-10 rounded-full object-cover"> 
+                <span class="text-2xl font-bold text-white">Codechype<span class="text-blue-400">.</span></span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-blue-400 transition-colors duration-300">Home</a>
+                <a href="courses.html" class="hover:text-blue-400 transition-colors duration-300">Courses</a>
+                <a href="about.html" class="text-blue-400 font-semibold">About Us</a>
+                <a href="contact.html" class="hover:text-blue-400 transition-colors duration-300">Contact</a>
+            </nav>
+            <a href="contact.html" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-transform duration-300 hover:scale-105">
+                Enroll Now
+            </a>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-8 text-xl">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 focus:outline-none">
+                <i data-lucide="x" class="w-8 h-8 text-white"></i>
+            </button>
+            <a href="index.html" class="text-white hover:text-blue-400 transition-colors duration-300">Home</a>
+            <a href="courses.html" class="text-white hover:text-blue-400 transition-colors duration-300">Courses</a>
+            <a href="about.html" class="text-blue-400 font-semibold">About Us</a>
+            <a href="contact.html" class="text-white hover:text-blue-400 transition-colors duration-300">Contact</a>
+            <a href="courses.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+                Enroll Now
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header-gradient text-white text-center py-24 px-6">
+            <div class="container mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Our Mission: To Build the Next Generation of Tech Innovators</h1>
+                <p class="text-lg md:text-xl text-teal-100 max-w-3xl mx-auto">
+                    We believe learning to code is about more than just syntax; it's about building real-world solutions.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 bg-white">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in-left">
+                    <img src="image/ourstoryimage.avif" alt="The Codechype Team" class="rounded-lg shadow-lg w-full h-full object-cover hover-lift">
+                </div>
+                <div class="animate-fade-in-right">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-800">The Story Behind Codechype</h2>
+                    <p class="text-gray-600 mb-4">
+                        Codechype was founded by a team of industry veterans who saw a gap between traditional computer science education and the practical skills needed in the tech industry. We noticed too many graduates knew theory but couldn't build a complete application.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Our solution is simple: a curriculum centered around project-based learning. Every student at Codechype builds a portfolio of real, impressive projects, ensuring they graduate not just with knowledge, but with tangible proof of their skills.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg text-center animate-fade-in-up">
+                            <div class="text-2xl font-bold text-blue-600">2020</div>
+                            <div class="text-sm text-gray-600">Founded</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg text-center animate-fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="text-2xl font-bold text-green-600">50+</div>
+                            <div class="text-sm text-gray-600">Countries</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center animate-spin-slow">
+                            <i data-lucide="lightbulb" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <p class="text-gray-700 italic">"Innovation happens when passion meets opportunity."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 bg-gray-100">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800 animate-fade-in-up">Meet Our Expert Mentors</h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">Learn from industry professionals who are passionate about sharing their knowledge and helping you succeed</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-center hover-lift animate-fade-in-left">
+                        <div class="relative mb-6">
+                            <img class="w-32 h-32 rounded-full mx-auto object-cover ring-4 ring-blue-500" src="https://placehold.co/200x200/d1d5db/374151?text=Riya" alt="Riya">
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center animate-bounce">
+                                <i data-lucide="star" class="w-4 h-4 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-1 text-gray-800">Riya Sharma</h3>
+                        <p class="text-blue-600 font-semibold mb-3">Lead Instructor & Co-Founder</p>
+                        <p class="text-gray-600 mb-4">A former software engineer at a top tech firm, Riya is passionate about making high-quality tech education accessible to everyone.</p>
+                        <div class="flex justify-center space-x-4 mb-4">
+                            <a href="#" class="text-gray-500 hover:text-blue-600 transition-colors"><i data-lucide="linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-blue-600 transition-colors"><i data-lucide="github"></i></a>
+                        </div>
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg">
+                            <div class="text-sm font-semibold text-blue-600">8+ Years Experience</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-center hover-lift animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="relative mb-6">
+                            <img class="w-32 h-32 rounded-full mx-auto object-cover ring-4 ring-green-500" src="https://placehold.co/200x200/d1d5db/374151?text=Arjun" alt="Arjun">
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center animate-bounce" style="animation-delay: 0.2s;">
+                                <i data-lucide="brain" class="w-4 h-4 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-1 text-gray-800">Arjun Verma</h3>
+                        <p class="text-green-600 font-semibold mb-3">AI & Machine Learning Specialist</p>
+                        <p class="text-gray-600 mb-4">With a Master's in AI, Arjun has worked on cutting-edge machine learning models and loves to demystify complex topics for beginners.</p>
+                        <div class="flex justify-center space-x-4 mb-4">
+                            <a href="#" class="text-gray-500 hover:text-green-600 transition-colors"><i data-lucide="linkedin"></i></a>
+                            <a href="#" class="text-gray-500 hover:text-green-600 transition-colors"><i data-lucide="twitter"></i></a>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg">
+                            <div class="text-sm font-semibold text-green-600">PhD in AI Research</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-center hover-lift animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="relative mb-6">
+                            <img class="w-32 h-32 rounded-full mx-auto object-cover ring-4 ring-purple-500" src="https://placehold.co/200x200/d1d5db/374151?text=Shivam" alt="Shivam">
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center animate-bounce" style="animation-delay: 0.4s;">
+                                <i data-lucide="code" class="w-4 h-4 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-1 text-gray-800">Shivam Sharma</h3>
+                        <p class="text-purple-600 font-semibold mb-3">Full Stack Developer & Data Science Mentor</p>
+                        <p class="text-gray-600 mb-4">Shivam is a Web developer & data scientist with a talent for storytelling. She teaches students how to turn raw data into actionable insights.</p>
+                        <div class="flex justify-center space-x-4 mb-4">
+                            <a href="www.linkedin.com/in/shivam-kumar-73a6021b4" class="text-gray-500 hover:text-purple-600 transition-colors"><i data-lucide="linkedin"></i></a>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-3 rounded-lg">
+                            <div class="text-sm font-semibold text-purple-600">10+ Years in Tech</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Mentor Stats -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg text-center animate-fade-in-up hover-lift">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800">15+</div>
+                        <div class="text-sm text-gray-600">Expert Mentors</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg text-center animate-fade-in-up hover-lift" style="animation-delay: 0.1s;">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="award" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800">50+</div>
+                        <div class="text-sm text-gray-600">Years Combined Experience</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg text-center animate-fade-in-up hover-lift" style="animation-delay: 0.2s;">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="book-open" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800">100K+</div>
+                        <div class="text-sm text-gray-600">Students Mentored</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg text-center animate-fade-in-up hover-lift" style="animation-delay: 0.3s;">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="star" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-800">4.9/5</div>
+                        <div class="text-sm text-gray-600">Average Rating</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Achievements Section -->
+        <section class="py-20 px-6 bg-gradient-to-br from-indigo-50 to-purple-50">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800 animate-fade-in-up">Our Achievements & Impact</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">Measuring our success through the success of our students and community</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <div class="bg-white rounded-xl p-8 shadow-lg text-center hover-lift animate-fade-in-up">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                            <i data-lucide="trophy" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-2">25+</h3>
+                        <p class="text-gray-600">Awards & Recognitions</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-8 shadow-lg text-center hover-lift animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse" style="animation-delay: 0.1s;">
+                            <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-2">2,500+</h3>
+                        <p class="text-gray-600">Students Trained</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-8 shadow-lg text-center hover-lift animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse" style="animation-delay: 0.2s;">
+                            <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-2">85%</h3>
+                        <p class="text-gray-600">Job Placement Rate</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-8 shadow-lg text-center hover-lift animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse" style="animation-delay: 0.3s;">
+                            <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-2">50+</h3>
+                        <p class="text-gray-600">Countries Served</p>
+                    </div>
+                </div>
+
+                <!-- Impact Stories -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover-lift animate-fade-in-left">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mb-6">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Career Transformation</h3>
+                        <p class="text-gray-600 mb-4">Our graduates have seen an average salary increase of 85% within 6 months of completing our programs.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-sm text-blue-600 font-semibold">"From ₹3L to ₹8L package in just 4 months!"</p>
+                            <p class="text-xs text-gray-500 mt-1">- Recent Graduate</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover-lift animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mb-6">
+                            <i data-lucide="heart" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Community Impact</h3>
+                        <p class="text-gray-600 mb-4">We've donated over 10,000 hours of free coding education to underprivileged communities worldwide.</p>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <p class="text-sm text-green-600 font-semibold">"Education should be a right, not a privilege."</p>
+                            <p class="text-xs text-gray-500 mt-1">- Our Mission</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-8 shadow-lg hover-lift animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-6">
+                            <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Innovation Hub</h3>
+                        <p class="text-gray-600 mb-4">Our students have launched 200+ successful startups and contributed to open-source projects used by millions.</p>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <p class="text-sm text-purple-600 font-semibold">"Building the future, one line of code at a time."</p>
+                            <p class="text-xs text-gray-500 mt-1">- Student Project</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Values Section -->
+        <section class="py-20 px-6 bg-white">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800 animate-fade-in-up">Our Core Values</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">The principles that guide everything we do at Codechype</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="text-center animate-fade-in-left">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-spin-slow">
+                            <i data-lucide="target" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Excellence</h3>
+                        <p class="text-gray-600">We strive for excellence in everything we do, from curriculum design to student support. Quality is never compromised.</p>
+                    </div>
+
+                    <div class="text-center animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-spin-slow" style="animation-delay: 0.2s;">
+                            <i data-lucide="users" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Community</h3>
+                        <p class="text-gray-600">We believe in the power of community. Learning together, supporting each other, and growing as one big family.</p>
+                    </div>
+
+                    <div class="text-center animate-fade-in-right" style="animation-delay: 0.4s;">
+                        <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-spin-slow" style="animation-delay: 0.4s;">
+                            <i data-lucide="lightbulb" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Innovation</h3>
+                        <p class="text-gray-600">We constantly innovate our teaching methods, curriculum, and technology to provide the best learning experience.</p>
+                    </div>
+
+                    <div class="text-center animate-fade-in-left" style="animation-delay: 0.6s;">
+                        <div class="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-spin-slow" style="animation-delay: 0.6s;">
+                            <i data-lucide="shield" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Integrity</h3>
+                        <p class="text-gray-600">We operate with complete transparency, honesty, and ethical standards in all our interactions and business practices.</p>
+                    </div>
+
+                    <div class="text-center animate-fade-in-up" style="animation-delay: 0.8s;">
+                        <div class="w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-spin-slow" style="animation-delay: 0.8s;">
+                            <i data-lucide="heart" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Inclusivity</h3>
+                        <p class="text-gray-600">We welcome learners from all backgrounds, experiences, and abilities. Everyone deserves access to quality education.</p>
+                    </div>
+
+                    <div class="text-center animate-fade-in-right" style="animation-delay: 1s;">
+                        <div class="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-spin-slow" style="animation-delay: 1s;">
+                            <i data-lucide="rocket" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Empowerment</h3>
+                        <p class="text-gray-600">We empower our students to take control of their careers, build confidence, and achieve their dreams in tech.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Vision Section -->
+        <section class="py-20 px-6 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 animate-fade-in-up">Our Vision for the Future</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">Building a world where quality tech education is accessible to everyone, everywhere</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-fade-in-left">
+                        <h3 class="text-2xl font-bold mb-6">What We're Building</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Global Learning Platform</h4>
+                                    <p class="text-gray-300">Expanding to 100+ countries with localized content and multilingual support.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">AI-Powered Learning</h4>
+                                    <p class="text-gray-300">Personalized learning paths and intelligent tutoring systems for every student.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Industry Partnerships</h4>
+                                    <p class="text-gray-300">Direct hiring partnerships with top tech companies worldwide.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Free Education Initiative</h4>
+                                    <p class="text-gray-300">Providing free coding education to 1 million students from underserved communities.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="animate-fade-in-right">
+                        <div class="bg-gradient-to-br from-blue-900/50 to-purple-900/50 backdrop-blur rounded-2xl p-8">
+                            <h4 class="text-xl font-bold mb-6 text-center">2025 Goals</h4>
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Students Trained</span>
+                                    <span class="font-bold text-blue-400">10,000+</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full animate-pulse" style="width: 75%"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Countries Served</span>
+                                    <span class="font-bold text-green-400">100+</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full animate-pulse" style="width: 65%"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Job Placement Rate</span>
+                                    <span class="font-bold text-purple-400">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-purple-500 h-2 rounded-full animate-pulse" style="width: 85%"></div>
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Free Courses Offered</span>
+                                    <span class="font-bold text-orange-400">50+</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2">
+                                    <div class="bg-orange-500 h-2 rounded-full animate-pulse" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: #072f68;" class=" text-white py-20 px-6 text-center">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold mb-4 animate-fade-in-up">Join Our Community</h2>
+                <p class="text-blue-100 mb-8 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">Start your journey with a team that's invested in your success.</p>
+                <a href="courses.html" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 inline-block hover:scale-105 shadow-lg hover:shadow-xl animate-fade-in-up hover-lift" style="animation-delay: 0.4s;">
+                    Explore Our Courses
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Codechype</h3>
+                    <p class="text-gray-400">Your launchpad into the world of technology, powered by project-based learning. Unlock your coding potential!</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Courses</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Popular Courses</h3>
+                    <ul class="space-y-2">
+                        <li><a href="course-python-beginner.html" class="text-gray-400 hover:text-white">Python Kickstart</a></li>
+                        <li><a href="course-data-analytics.html" class="text-gray-400 hover:text-white">Data Analytics</a></li>
+                        <li><a href="course-ai-ml-beginner.html" class="text-gray-400 hover:text-white">AI & ML Foundations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 Codechype. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        lucide.createIcons();
+
+        // JavaScript for Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918434457228?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20your%20courses."
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+   <!-- WhatsApp SVG icon -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+     <path d="M16.002 3C9.383 3 4 8.383 4 15.002c0 2.636.775 5.101 2.109 7.172L4 29l7.004-2.072A11.9 11.9 0 0016.002 27C22.617 27 28 21.617 28 15.002 28 8.383 22.617 3 16.002 3zm0 22.32a9.287 9.287 0 01-4.73-1.3l-.34-.2-4.158 1.23 1.23-4.047-.22-.34a9.314 9.314 0 01-1.466-5.035c0-5.147 4.186-9.332 9.332-9.332 5.147 0 9.332 4.185 9.332 9.332s-4.185 9.332-9.332 9.332zm5.027-6.972c-.273-.137-1.62-.803-1.872-.893-.252-.093-.435-.137-.616.136-.183.273-.708.894-.867 1.08-.159.183-.32.205-.593.068-.273-.137-1.153-.426-2.197-1.36-.812-.725-1.36-1.62-1.518-1.893-.159-.273-.017-.421.12-.558.123-.123.273-.32.41-.478.136-.159.183-.273.273-.456.09-.183.045-.341-.023-.478-.068-.136-.616-1.483-.845-2.034-.223-.536-.451-.464-.616-.472l-.523-.01c-.182 0-.478.068-.73.341-.252.273-.961.941-.961 2.293s.983 2.66 1.12 2.847c.137.183 1.935 2.958 4.69 4.147.656.283 1.168.452 1.566.58.658.21 1.257.18 1.73.11.527-.078 1.62-.66 1.85-1.298.228-.637.228-1.182.159-1.298-.068-.115-.25-.183-.523-.32z"/>
+   </svg>
+</a>
+
+</body>
+</html>

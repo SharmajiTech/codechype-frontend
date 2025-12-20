@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UI/UX Design Fundamentals – Codechype</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:Inter,sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+}
+section{position:relative;z-index:10}
+.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.blob{
+  position:absolute;border-radius:9999px;filter:blur(120px);
+  animation:blob 20s infinite ease-in-out;
+}
+.blob1{background:#ec4899;width:420px;height:420px;top:-80px;left:-60px}
+.blob2{background:#6366f1;width:420px;height:420px;bottom:-80px;right:-60px;animation-delay:5s}
+.blob3{background:#22c55e;width:360px;height:360px;top:40%;left:40%;animation-delay:10s}
+@keyframes blob{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(60px,-40px)}
+}
+.card{
+  background:rgba(15,23,42,.9);
+  border:1px solid #1e293b;
+  border-radius:1.25rem;
+}
+.btn{
+  background:linear-gradient(135deg,#ec4899,#6366f1);
+  color:#fff;font-weight:700;
+  padding:.75rem 1.8rem;border-radius:999px;
+}
+.btn:hover{transform:translateY(-1px)}
+</style>
+</head>
+
+<body>
+
+<!-- Background blobs -->
+<div class="bg-blobs">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 bg-slate-950/80 backdrop-blur border-b border-slate-800 z-40">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a class="text-2xl font-extrabold">Codechype</a>
+    <nav class="hidden md:flex gap-8 text-sm">
+      <a href="index.html">Home</a>
+      <a href="courses.html" class="text-pink-400">Courses</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn hidden md:inline-flex">Talk to Mentor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="py-24 text-center">
+  <div class="max-w-6xl mx-auto">
+    <p class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-pink-300/80 mb-4">
+      <span class="h-1 w-6 rounded-full bg-pink-400"></span>
+      Beginner-Friendly · Portfolio-Focused · Industry-Relevant
+      <span class="h-1 w-6 rounded-full bg-purple-400"></span>
+    </p>
+
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-pink-100 to-purple-200 bg-clip-text text-transparent">
+      UI / UX Design Fundamentals
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-slate-200 mb-8 text-lg leading-relaxed">
+      Master the art of creating digital experiences that users love. From understanding user behavior to crafting beautiful, functional interfaces — learn the complete design process used by top product teams worldwide.
+    </p>
+
+    <div class="max-w-2xl mx-auto mb-8">
+      <h2 class="text-lg font-semibold text-purple-300 mb-4">What You'll Master</h2>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-slate-800/40 p-3 rounded-lg">
+          <div class="text-pink-300 font-medium mb-1">Design Thinking</div>
+          <div class="text-slate-400">User research, empathy mapping, problem solving</div>
+        </div>
+        <div class="bg-slate-800/40 p-3 rounded-lg">
+          <div class="text-pink-300 font-medium mb-1">UI Design Skills</div>
+          <div class="text-slate-400">Visual design, typography, color theory, layouts</div>
+        </div>
+        <div class="bg-slate-800/40 p-3 rounded-lg">
+          <div class="text-pink-300 font-medium mb-1">UX Best Practices</div>
+          <div class="text-slate-400">Wireframing, prototyping, usability testing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+      <a href="contact.html" class="btn">Enroll for UI/UX Course</a>
+      <a href="#curriculum" class="inline-flex items-center gap-2 text-sm text-slate-200 hover:text-pink-300 transition-colors">
+        <span>View detailed curriculum</span>
+        <i data-lucide="arrow-down" class="w-4 h-4"></i>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap gap-4 justify-center text-xs text-slate-300">
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-3 py-1 rounded-full border border-slate-700">
+        <i data-lucide="clock" class="w-4 h-4 text-pink-300"></i>
+        8–10 Weeks · Flexible Pace
+      </span>
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-3 py-1 rounded-full border border-slate-700">
+        <i data-lucide="palette" class="w-4 h-4 text-purple-300"></i>
+        Figma & Design Tools
+      </span>
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-3 py-1 rounded-full border border-slate-700">
+        <i data-lucide="briefcase" class="w-4 h-4 text-emerald-300"></i>
+        Portfolio-Ready Projects
+      </span>
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-3 py-1 rounded-full border border-slate-700">
+        <i data-lucide="users" class="w-4 h-4 text-blue-300"></i>
+        1:1 Design Feedback
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="relative py-20">
+  <div class="max-w-7xl mx-auto px-6">
+  <h2 class="text-3xl font-bold text-center mb-6">Why Choose Our UI/UX Course?</h2>
+  <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+    Join thousands of designers who started from zero and now work at top companies. Our curriculum is designed for real-world application.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-8 mb-12">
+    <div class="card p-8">
+      <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="users" class="w-6 h-6 text-pink-300"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-3">User-First Thinking</h3>
+      <p class="text-slate-300 mb-4">
+        Master the psychology of user behavior, conduct effective research, and create designs that solve real problems.
+      </p>
+      <ul class="text-sm text-slate-400 space-y-1">
+        <li>• User interviews & surveys</li>
+        <li>• Empathy mapping techniques</li>
+        <li>• Journey mapping & personas</li>
+        <li>• Problem validation methods</li>
+      </ul>
+    </div>
+
+    <div class="card p-8">
+      <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="palette" class="w-6 h-6 text-purple-300"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Visual & Interaction Design</h3>
+      <p class="text-slate-300 mb-4">
+        Learn professional design principles, color theory, typography, and create interfaces that are both beautiful and functional.
+      </p>
+      <ul class="text-sm text-slate-400 space-y-1">
+        <li>• Color psychology & accessibility</li>
+        <li>• Typography systems & hierarchy</li>
+        <li>• Component libraries & design systems</li>
+        <li>• Micro-interactions & animations</li>
+      </ul>
+    </div>
+
+    <div class="card p-8">
+      <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="briefcase" class="w-6 h-6 text-blue-300"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Real Portfolio Projects</h3>
+      <p class="text-slate-300 mb-4">
+        Build professional case studies that get you hired. Work on real briefs and create designs ready for your portfolio.
+      </p>
+      <ul class="text-sm text-slate-400 space-y-1">
+        <li>• Mobile app redesign project</li>
+        <li>• SaaS dashboard design</li>
+        <li>• E-commerce platform UX</li>
+        <li>• Portfolio presentation skills</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="text-center">
+      <div class="text-3xl font-bold text-pink-300 mb-2">94%</div>
+      <p class="text-slate-300">Students land design roles within 6 months</p>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-purple-300 mb-2">4.9/5</div>
+      <p class="text-slate-300">Average student satisfaction rating</p>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-blue-300 mb-2">200+</div>
+      <p class="text-slate-300">Partner companies hiring our graduates</p>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-green-300 mb-2">$68K</div>
+      <p class="text-slate-300">Average starting salary for graduates</p>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="relative py-20">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[2fr_1fr] gap-10">
+  <div class="space-y-8">
+    <div class="card p-8">
+      <h2 class="text-3xl font-bold mb-4">Course Overview</h2>
+      <p class="text-slate-300 mb-4 leading-relaxed">
+        UI/UX Fundamentals introduces you to the complete design process used in modern product teams — from understanding user needs to crafting pixel-perfect interfaces that drive business results.
+      </p>
+      <p class="text-slate-300 mb-6 leading-relaxed">
+        You'll learn how to conduct user research, create wireframes and prototypes, design visual systems, and validate your designs through testing. Most importantly, you'll build a professional portfolio that showcases your skills to potential employers.
+      </p>
+
+      <h3 class="text-xl font-semibold mb-4">What makes this course different?</h3>
+      <div class="grid sm:grid-cols-2 gap-4 text-sm">
+        <div class="flex items-start gap-3">
+          <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-medium text-slate-100">Industry-Relevant Skills</p>
+            <p class="text-slate-400">Learn tools and methods used by top design teams</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-medium text-slate-100">Portfolio-Focused</p>
+            <p class="text-slate-400">Every project builds your professional showcase</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-medium text-slate-100">Real Feedback</p>
+            <p class="text-slate-400">1:1 mentorship from experienced designers</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+          <div>
+            <p class="font-medium text-slate-100">Job-Ready</p>
+            <p class="text-slate-400">Interview preparation and career guidance included</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Who is this for -->
+    <div class="card p-8">
+      <h3 class="text-xl font-semibold mb-4">Who is this course for?</h3>
+      <div class="grid sm:grid-cols-2 gap-5 text-sm text-slate-300">
+        <div class="space-y-3">
+          <p class="inline-flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            Complete beginners with no design experience
+          </p>
+          <p class="inline-flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            Career changers from non-creative fields
+          </p>
+          <p class="inline-flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            Marketing professionals wanting design skills
+          </p>
+        </div>
+        <div class="space-y-3">
+          <p class="inline-flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            Developers wanting to improve UX skills
+          </p>
+          <p class="inline-flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            Entrepreneurs designing their own products
+          </p>
+          <p class="inline-flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            Product managers needing design understanding
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prerequisites & Requirements -->
+    <div class="card p-8">
+      <h3 class="text-xl font-semibold mb-4">Prerequisites & Requirements</h3>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+            <i data-lucide="check" class="w-4 h-4 text-green-400"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-slate-100 mb-1">No Prior Experience Required</h4>
+            <p class="text-sm text-slate-400">This course starts from absolute basics. If you've never opened Figma or heard of UX, you're in the right place.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+            <i data-lucide="monitor" class="w-4 h-4 text-blue-400"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-slate-100 mb-1">Computer with Internet</h4>
+            <p class="text-sm text-slate-400">A computer (Windows/Mac/Linux) with stable internet connection. We'll help you set up all required tools.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+            <i data-lucide="clock" class="w-4 h-4 text-purple-400"></i>
+          </div>
+          <div>
+            <h4 class="font-medium text-slate-100 mb-1">8-10 Hours per Week</h4>
+            <p class="text-sm text-slate-400">Flexible schedule with live sessions and recorded content. Learn at your own pace with mentor support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="card p-8 h-fit">
+    <h3 class="text-xl font-bold mb-6">Program Snapshot</h3>
+    <ul class="space-y-4 text-slate-300 mb-8">
+      <li class="flex items-center justify-between">
+        <span class="flex items-center gap-2">
+          <i data-lucide="clock" class="w-4 h-4 text-pink-300"></i> Duration
+        </span>
+        <span class="text-slate-200 font-medium">8–10 Weeks</span>
+      </li>
+      <li class="flex items-center justify-between">
+        <span class="flex items-center gap-2">
+          <i data-lucide="layers" class="w-4 h-4 text-pink-300"></i> Level
+        </span>
+        <span class="text-slate-200 font-medium">Beginner Friendly</span>
+      </li>
+      <li class="flex items-center justify-between">
+        <span class="flex items-center gap-2">
+          <i data-lucide="palette" class="w-4 h-4 text-pink-300"></i> Tools
+        </span>
+        <span class="text-slate-200 font-medium">Figma, Miro</span>
+      </li>
+      <li class="flex items-center justify-between">
+        <span class="flex items-center gap-2">
+          <i data-lucide="briefcase" class="w-4 h-4 text-pink-300"></i> Projects
+        </span>
+        <span class="text-slate-200 font-medium">3+ Portfolio Pieces</span>
+      </li>
+      <li class="flex items-center justify-between">
+        <span class="flex items-center gap-2">
+          <i data-lucide="user" class="w-4 h-4 text-pink-300"></i> Mentor
+        </span>
+        <span class="text-slate-200 font-medium">Shivam Kumar</span>
+      </li>
+    </ul>
+    <div class="space-y-3">
+      <a href="contact.html" class="btn w-full text-center block">Ask for Fee & Syllabus</a>
+      <p class="text-xs text-slate-400 text-center">Get detailed course breakdown and pricing</p>
+    </div>
+  </aside>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum" class="relative py-20">
+  <div class="max-w-7xl mx-auto px-6">
+  <h2 class="text-3xl font-bold text-center mb-6">Curriculum Roadmap</h2>
+  <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+    A comprehensive 8-10 week journey from design fundamentals to professional portfolio projects. Each module builds upon the previous one.
+  </p>
+
+  <div class="space-y-8">
+    <!-- Week 1-2 -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center">
+          <span class="text-pink-300 font-bold text-lg">1-2</span>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Design Thinking & UX Fundamentals</h3>
+          <p class="text-slate-400">Weeks 1-2 • Building your design foundation</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">What you'll learn:</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Design thinking methodology and problem-solving frameworks
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              User-centered design principles and empathy mapping
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Understanding user psychology and behavior patterns
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Basic sketching and ideation techniques
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">Project:</h4>
+          <p class="text-sm text-slate-300 mb-3">Design Challenge: Redesign a problematic app</p>
+          <p class="text-xs text-slate-400">Identify pain points, create user personas, and propose solutions</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 3-4 -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+          <span class="text-purple-300 font-bold text-lg">3-4</span>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">User Research & Wireframing</h3>
+          <p class="text-slate-400">Weeks 3-4 • Understanding users deeply</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">What you'll learn:</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Conducting user interviews and surveys effectively
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Creating user journey maps and experience flows
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Wireframing low and high-fidelity screens
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Information architecture and navigation design
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">Project:</h4>
+          <p class="text-sm text-slate-300 mb-3">User Research & Wireframing Project</p>
+          <p class="text-xs text-slate-400">Complete user research for a real app and create wireframes</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 5-6 -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+          <span class="text-blue-300 font-bold text-lg">5-6</span>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">UI Design & Visual Systems</h3>
+          <p class="text-slate-400">Weeks 5-6 • Making things beautiful</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">What you'll learn:</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Color theory, typography, and visual hierarchy
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Creating design systems and component libraries
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Designing for different screen sizes and devices
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Micro-interactions and animation principles
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">Project:</h4>
+          <p class="text-sm text-slate-300 mb-3">Mobile App UI Design</p>
+          <p class="text-xs text-slate-400">Design a complete mobile app with consistent visual system</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week 7-8 -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+          <span class="text-green-300 font-bold text-lg">7-8</span>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Prototyping & Usability Testing</h3>
+          <p class="text-slate-400">Weeks 7-8 • Testing and iteration</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">What you'll learn:</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Creating interactive prototypes in Figma
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Usability testing methods and best practices
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Analyzing test results and implementing feedback
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+              Preparing designs for developer handoff
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-100 mb-3">Project:</h4>
+          <p class="text-sm text-slate-300 mb-3">Complete Product Design + Portfolio</p>
+          <p class="text-xs text-slate-400">End-to-end design process with testing and portfolio presentation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-12">
+    <p class="text-slate-400 text-sm">Each module includes live sessions, assignments, and 1:1 feedback from your mentor</p>
+  </div>
+</section>
+
+<!-- TOOLS & RESOURCES -->
+<section class="relative py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-6">Tools & Resources You'll Master</h2>
+    <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+      Learn industry-standard design tools and access premium resources included in your course fee.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="palette" class="w-6 h-6 text-pink-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Figma</h3>
+        <p class="text-slate-300 mb-4">Industry-leading design tool for UI/UX. Create wireframes, prototypes, and design systems.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">Design Tool</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Prototyping</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="users" class="w-6 h-6 text-purple-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Miro</h3>
+        <p class="text-slate-300 mb-4">Digital whiteboard for brainstorming, user journey mapping, and collaborative design thinking.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">Collaboration</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Brainstorming</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="eye" class="w-6 h-6 text-blue-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Usability Testing Tools</h3>
+        <p class="text-slate-300 mb-4">Hotjar, UserTesting, and Maze for remote user testing and feedback collection.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">User Testing</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Analytics</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="book-open" class="w-6 h-6 text-green-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Design System Library</h3>
+        <p class="text-slate-300 mb-4">Access to premium UI kits, icon libraries, and component collections for faster design.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">Components</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Templates</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="camera" class="w-6 h-6 text-orange-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Stock Resources</h3>
+        <p class="text-slate-300 mb-4">Premium stock photos, illustrations, and graphics library for your design projects.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">Assets</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Visuals</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="headset" class="w-6 h-6 text-red-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">1:1 Mentor Support</h3>
+        <p class="text-slate-300 mb-4">Weekly calls with experienced designers plus unlimited messaging support throughout.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">Mentorship</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Feedback</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <h3 class="text-2xl font-semibold mb-6">Learning Resources Included</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="card p-4 text-center">
+          <i data-lucide="video" class="w-8 h-8 text-pink-300 mx-auto mb-2"></i>
+          <h4 class="font-semibold mb-1">Video Lessons</h4>
+          <p class="text-xs text-slate-400">200+ HD videos with lifetime access</p>
+        </div>
+        <div class="card p-4 text-center">
+          <i data-lucide="file-text" class="w-8 h-8 text-purple-300 mx-auto mb-2"></i>
+          <h4 class="font-semibold mb-1">Design Templates</h4>
+          <p class="text-xs text-slate-400">50+ Figma templates and UI kits</p>
+        </div>
+        <div class="card p-4 text-center">
+          <i data-lucide="download" class="w-8 h-8 text-blue-300 mx-auto mb-2"></i>
+          <h4 class="font-semibold mb-1">Resource Library</h4>
+          <p class="text-xs text-slate-400">Premium fonts, icons, and assets</p>
+        </div>
+        <div class="card p-4 text-center">
+          <i data-lucide="award" class="w-8 h-8 text-green-300 mx-auto mb-2"></i>
+          <h4 class="font-semibold mb-1">Certificate</h4>
+          <p class="text-xs text-slate-400">Industry-recognized completion certificate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS SHOWCASE -->
+<section class="relative py-20 bg-gradient-to-b from-slate-900/60 to-slate-950/80">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-6">Featured Projects You'll Build</h2>
+    <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+      Create professional portfolio pieces that showcase your design skills. Each project simulates real client work with detailed briefs and deliverables.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="smartphone" class="w-6 h-6 text-pink-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">FinTech Mobile App Redesign</h3>
+        <p class="text-slate-300 mb-4">Complete UX audit and redesign of a banking app. Conduct user research, create personas, wireframes, and high-fidelity designs.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">User Research</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Mobile UX</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="monitor" class="w-6 h-6 text-purple-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">SaaS Dashboard Design</h3>
+        <p class="text-slate-300 mb-4">Design a comprehensive analytics dashboard for a B2B SaaS product. Focus on data visualization and complex user workflows.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">Data Viz</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">B2B UX</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="shopping-bag" class="w-6 h-6 text-blue-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">E-commerce Platform UX</h3>
+        <p class="text-slate-300 mb-4">Redesign an online store's user experience. Optimize conversion funnel, improve navigation, and enhance mobile shopping experience.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">E-commerce</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Conversion</span>
+        </div>
+      </div>
+
+      <div class="card p-6">
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="users" class="w-6 h-6 text-green-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Healthcare App Design</h3>
+        <p class="text-slate-300 mb-4">Design a patient portal for a healthcare provider. Focus on accessibility, medical UX patterns, and sensitive data handling.</p>
+        <div class="text-sm">
+          <span class="bg-pink-500/20 text-pink-300 px-2 py-1 rounded text-xs">Healthcare</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Accessibility</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="text-slate-400 text-sm">All projects include design briefs, user research data, and portfolio presentation templates</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER OUTCOMES -->
+<section class="relative py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-6">Launch Your Design Career</h2>
+    <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+      Our graduates don't just learn design — they build successful careers in UX/UI. Here's what you can expect after completing the program.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div class="text-center">
+        <div class="text-3xl font-bold text-pink-300 mb-2">94%</div>
+        <p class="text-slate-300">Job placement rate within 6 months</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-purple-300 mb-2">$68K</div>
+        <p class="text-slate-300">Average starting salary</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-blue-300 mb-2">200+</div>
+        <p class="text-slate-300">Partner companies hiring</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-green-300 mb-2">4.9/5</div>
+        <p class="text-slate-300">Student satisfaction rating</p>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <h3 class="text-2xl font-semibold mb-6">Our graduates work at</h3>
+      <div class="flex flex-wrap justify-center gap-6 text-slate-400">
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Google</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Microsoft</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Adobe</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Airbnb</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Spotify</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Uber</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="relative py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">What learners say</h2>
+      <p class="text-sm md:text-base text-slate-300 mb-8">
+        From complete beginners to career changers — hear from designers who transformed their careers through our program.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="card p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-pink-500/20 rounded-full flex items-center justify-center mr-3">
+              <span class="text-pink-300 font-semibold text-sm">P</span>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-200">Priya Sharma</p>
+              <p class="text-xs text-slate-400">UX Designer at Google</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-100 italic mb-4">
+            "The course gave me the confidence to apply for design roles. I went from knowing nothing about UX to landing a job at a top tech company in 4 months. The portfolio projects were exactly what employers wanted to see."
+          </p>
+          <div class="flex text-yellow-400 text-sm">
+            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center mr-3">
+              <span class="text-purple-300 font-semibold text-sm">R</span>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-200">Rahul Mehta</p>
+              <p class="text-xs text-slate-400">Product Designer at Microsoft</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-100 italic mb-4">
+            "The portfolio projects were incredible. I had real case studies to show employers, and the quality of work got me interviews at FAANG companies. The mentor feedback was invaluable."
+          </p>
+          <div class="flex text-yellow-400 text-sm">
+            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
+              <span class="text-blue-300 font-semibold text-sm">A</span>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-200">Ananya Singh</p>
+              <p class="text-xs text-slate-400">UI Designer at Adobe</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-100 italic mb-4">
+            "As someone from a non-design background, this course was perfect. The mentor support and structured learning path made everything click. I now work on products used by millions."
+          </p>
+          <div class="flex text-yellow-400 text-sm">
+            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Testimonials -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-6">
+          <p class="text-sm text-slate-100 italic mb-4">
+            "The course doesn't just teach design — it teaches you how to think like a designer. The problem-solving approach has helped me in every aspect of my work, not just UI/UX."
+          </p>
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
+              <span class="text-green-300 font-semibold text-xs">S</span>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-200 text-sm">Sandeep Kumar</p>
+              <p class="text-xs text-slate-400">Freelance Designer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <p class="text-sm text-slate-100 italic mb-4">
+            "Best investment I made for my career. The tools, resources, and network I gained through this course opened so many opportunities. Highly recommend to anyone serious about design."
+          </p>
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center mr-3">
+              <span class="text-orange-300 font-semibold text-xs">M</span>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-200 text-sm">Meera Patel</p>
+              <p class="text-xs text-slate-400">Design Lead at Startup</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="relative py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h2>
+    <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+      Get answers to common questions about our UI/UX Design Fundamentals course.
+    </p>
+
+    <div class="max-w-4xl mx-auto space-y-6">
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-pink-300">Do I need any prior design experience?</h3>
+        <p class="text-slate-300">Absolutely not! This course is designed for complete beginners. We start from the very basics of design thinking and build up to professional-level skills. Many of our successful graduates had no prior design experience.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-purple-300">What tools will I learn?</h3>
+        <p class="text-slate-300">You'll master Figma (industry-standard design tool), Miro (for collaborative brainstorming), and various usability testing tools. We also provide access to premium UI kits, icon libraries, and design resources worth thousands of dollars.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-blue-300">How long does it take to complete?</h3>
+        <p class="text-slate-300">The course is designed to be completed in 8-10 weeks with 8-10 hours of study per week. However, you can go at your own pace. Many students take 12-14 weeks to fully absorb the concepts and complete projects.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-green-300">Will I get a job after this course?</h3>
+        <p class="text-slate-300">While we can't guarantee employment, our graduates have a 94% job placement rate within 6 months. You'll build a professional portfolio, learn industry-standard tools, and get career guidance. Many graduates land roles at top companies like Google, Microsoft, and Adobe.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-orange-300">What's included in the course fee?</h3>
+        <p class="text-slate-300">Everything! 200+ HD video lessons, premium design tools access, 50+ Figma templates, resource library, 1:1 mentor support, portfolio reviews, certificate of completion, and lifetime access to course materials.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-red-300">Can I do this while working full-time?</h3>
+        <p class="text-slate-300">Definitely! The course is designed for working professionals. All sessions are recorded, and you can study at your own schedule. Many of our students complete the course while working full-time jobs.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-cyan-300">What if I don't like design after starting?</h3>
+        <p class="text-slate-300">We offer a 7-day money-back guarantee. If you decide design isn't for you within the first week, we'll refund your payment in full. We want you to be completely confident in your decision.</p>
+      </div>
+
+      <div class="card p-6">
+        <h3 class="text-lg font-semibold mb-3 text-indigo-300">Do you provide placement assistance?</h3>
+        <p class="text-slate-300">Yes! We provide comprehensive career support including resume reviews, portfolio optimization, interview preparation, LinkedIn profile enhancement, and connections to our partner companies hiring designers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-slate-900/80 border border-pink-500/30 rounded-3xl px-6 py-10 md:px-10 md:py-12">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div class="max-w-xl">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            Ready to start your design career?
+          </h2>
+          <p class="text-sm md:text-base text-slate-200/90 mb-6 leading-relaxed">
+            Join thousands of successful designers who started with zero experience. Share your background and goals — we'll help you understand if this program is your perfect starting point and how to connect it to your dream design career.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 text-sm mb-6">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+              <span class="text-slate-200">No design experience required</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+              <span class="text-slate-200">Portfolio-ready projects</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+              <span class="text-slate-200">1:1 mentor guidance</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+              <span class="text-slate-200">Job placement support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-4">
+          <a href="contact.html" class="btn w-full justify-center text-center">
+            <span>Start Your Design Journey</span>
+          </a>
+          <p class="text-xs text-slate-400 text-center max-w-sm">
+            No spam. Just an honest conversation about your current level, goals, and how we can help you become a professional designer.
+          </p>
+
+          <div class="flex items-center gap-4 mt-4">
+            <div class="text-center">
+              <div class="text-lg font-bold text-pink-300">8-10</div>
+              <div class="text-xs text-slate-400">Weeks</div>
+            </div>
+            <div class="w-px h-8 bg-slate-600"></div>
+            <div class="text-center">
+              <div class="text-lg font-bold text-purple-300">3+</div>
+              <div class="text-xs text-slate-400">Projects</div>
+            </div>
+            <div class="w-px h-8 bg-slate-600"></div>
+            <div class="text-center">
+              <div class="text-lg font-bold text-blue-300">94%</div>
+              <div class="text-xs text-slate-400">Success Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/918434457228?text=Hi%2C%20I%20want%20to%20know%20about%20the%20UI%2FUX%20Design%20Fundamentals%20course."
+class="fixed bottom-6 right-6 bg-green-500 w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl">💬</a>
+
+<script>
+lucide.createIcons();
+gsap.registerPlugin(ScrollTrigger);
+gsap.from("section",{
+  opacity:0,
+  y:40,
+  stagger:.15,
+  duration:.7,
+  scrollTrigger:{trigger:"section",start:"top 85%"}
+});
+</script>
+
+</body>
+</html>

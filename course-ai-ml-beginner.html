@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Foundations of AI & Machine Learning – Codechype</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+<style>
+body {
+  font-family: "Inter", sans-serif;
+  background: #0e1228;
+  color: #eaf2ff;
+}
+
+/* --- FIX: Always visible backgrounds so content never disappears --- */
+section {
+  background: rgba(15, 23, 42, 0.9) !important;
+  backdrop-filter: blur(6px);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.magnetic-card {
+  background: rgba(34, 41, 68, 1) !important;
+  border: 2px solid rgba(106, 151, 255, 0.4) !important;
+}
+
+/* --- Other premium effects --- */
+.logo-glow{position:relative;overflow:hidden;}
+.logo-glow::after{content:"";position:absolute;top:-100%;left:-150%;width:200%;height:300%;
+background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.4) 45%,transparent 80%);
+animation:shine 4s linear infinite;}
+@keyframes shine{0%{transform:translateX(-100%);}60%{transform:translateX(110%);}100%{transform:translateX(110%);}}
+
+.btn-liquid{position:relative;padding:.8rem 2.1rem;border-radius:50px;font-weight:700;color:#fff;
+background:linear-gradient(135deg,#32e5ff,#4a64ff,#8b55ff);transition:.25s;}
+.btn-liquid:hover{transform:scale(1.04) translateY(-2px);filter:brightness(1.15);}
+
+.animate-blob{animation:blob 9s ease-in-out infinite;}
+@keyframes blob{0%{transform:translate(0,0) scale(1);}
+35%{transform:translate(30px,-40px) scale(1.07);}
+65%{transform:translate(-25px,20px) scale(.95);}
+100%{transform:translate(0,0) scale(1);}
+}
+.whatsapp-float{position:fixed;bottom:26px;right:26px;width:58px;height:58px;border-radius:50%;
+display:flex;justify-content:center;align-items:center;background:#25D366;z-index:999;animation:float 3s infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+</style>
+</head>
+
+<body class="overflow-x-hidden">
+
+<!-- BLOBS -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+  <div class="absolute -top-10 -left-10 w-[400px] h-[400px] bg-purple-600/30 rounded-full blur-[100px] animate-blob"></div>
+  <div class="absolute top-40 -right-10 w-[450px] h-[450px] bg-blue-500/25 rounded-full blur-[100px] animate-blob"></div>
+</div>
+
+<!-- HEADER -->
+<header class="bg-[#0e122a]/80 backdrop-blur border-b border-slate-800 sticky top-0 z-40 py-4">
+  <div class="container mx-auto flex justify-between items-center px-6">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-full overflow-hidden logo-glow">
+        <img src="image/codechypelogo.png" class="h-10 w-10 object-cover">
+      </div>
+      <span class="text-2xl font-extrabold tracking-tight">Codechype</span>
+    </a>
+    <nav class="hidden md:flex gap-8 font-medium">
+      <a href="index.html" class="hover:text-cyan-300">Home</a>
+      <a href="courses.html" class="text-cyan-400 font-semibold">Courses</a>
+      <a href="about.html" class="hover:text-cyan-300">About</a>
+      <a href="contact.html" class="hover:text-cyan-300">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn-liquid hidden md:inline-flex">Talk to Mentor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="text-center">
+  <div class="container mx-auto px-6 max-w-4xl">
+    <p class="text-sm mb-3 text-purple-300 tracking-widest uppercase">Beginner Friendly · No Maths · Real Projects</p>
+    <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-200 via-white to-cyan-200 bg-clip-text text-transparent mb-6">
+      Foundations of AI & Machine Learning
+    </h1>
+    <p class="text-xl text-slate-200 mb-8 leading-relaxed">
+      Master the fundamentals of artificial intelligence and machine learning without getting lost in complex mathematics. Learn how to build intelligent systems that make predictions, classify data, and solve real-world problems.
+    </p>
+
+    <div class="max-w-2xl mx-auto mb-8">
+      <h2 class="text-lg font-semibold text-cyan-300 mb-4">What You'll Learn</h2>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-slate-800/40 p-3 rounded-lg">
+          <div class="text-cyan-300 font-medium mb-1">AI Fundamentals</div>
+          <div class="text-slate-400">Neural networks, algorithms, data patterns</div>
+        </div>
+        <div class="bg-slate-800/40 p-3 rounded-lg">
+          <div class="text-cyan-300 font-medium mb-1">ML Techniques</div>
+          <div class="text-slate-400">Supervised & unsupervised learning</div>
+        </div>
+        <div class="bg-slate-800/40 p-3 rounded-lg">
+          <div class="text-cyan-300 font-medium mb-1">Python for AI</div>
+          <div class="text-slate-400">Scikit-learn, Pandas, NumPy ecosystem</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <a href="contact.html" class="btn-liquid inline-block">Enroll for Next AI Batch →</a>
+      <a href="#overview" class="text-slate-300 underline hover:text-cyan-300 transition">View Curriculum</a>
+    </div>
+
+    <div class="flex justify-center gap-3 text-sm text-slate-400">
+      <span class="bg-slate-800/40 px-3 py-1 rounded-full">10–12 Weeks</span>
+      <span class="bg-slate-800/40 px-3 py-1 rounded-full">Beginner Friendly</span>
+      <span class="bg-slate-800/40 px-3 py-1 rounded-full">4+ Real Projects</span>
+      <span class="bg-slate-800/40 px-3 py-1 rounded-full">Job-Ready Skills</span>
+    </div>
+  </div>
+</section>
+
+<!-- KEY POINTS -->
+<section>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-6">Why Choose Our AI/ML Course?</h2>
+    <p class="text-center text-slate-300 mb-12 max-w-2xl mx-auto">
+      Our beginner-focused curriculum makes AI and machine learning accessible to everyone, regardless of your background in mathematics or programming.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="magnetic-card rounded-2xl p-7">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="brain" class="w-6 h-6 text-purple-300"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">Learn Core ML Concepts</h3>
+        <p class="mb-4 text-slate-300 leading-relaxed">Master the fundamental concepts of machine learning through intuition and practical examples, not complex mathematics.</p>
+        <ul class="space-y-2 text-slate-300">
+          <li>• Regression & Classification algorithms</li>
+          <li>• Training vs Testing data splits</li>
+          <li>• Model evaluation metrics</li>
+          <li>• Preventing overfitting</li>
+        </ul>
+      </div>
+      <div class="magnetic-card rounded-2xl p-7">
+        <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="code" class="w-6 h-6 text-cyan-300"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">Hands-on Python ML</h3>
+        <p class="mb-4 text-slate-300">Use industry-standard Python libraries to build, train, and deploy machine learning models in real-world scenarios.</p>
+        <ul class="space-y-2 text-slate-300">
+          <li>• NumPy for numerical computing</li>
+          <li>• Pandas for data manipulation</li>
+          <li>• Scikit-Learn for ML workflows</li>
+          <li>• Matplotlib for data visualization</li>
+        </ul>
+      </div>
+      <div class="magnetic-card rounded-2xl p-7">
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="briefcase" class="w-6 h-6 text-green-300"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-3">Job-Ready Portfolio</h3>
+        <p class="mb-4 text-slate-300">Build 4+ complete ML projects that demonstrate your skills to employers and form the foundation of your professional portfolio.</p>
+        <ul class="space-y-2 text-slate-300">
+          <li>• Complete project documentation</li>
+          <li>• GitHub repository management</li>
+          <li>• Portfolio presentation skills</li>
+          <li>• Technical interview preparation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW & SIDEBAR -->
+<section id="overview">
+  <div class="container mx-auto grid lg:grid-cols-[2fr_1fr] gap-10 px-6">
+    <div class="magnetic-card rounded-2xl p-8 space-y-8">
+      <h2 class="text-4xl font-bold">Course Overview</h2>
+      <p class="text-lg text-slate-300 leading-relaxed">
+        This course teaches AI & ML through intuition first, coding second. We focus on understanding concepts visually and practically, ensuring you can explain ML to anyone — not just implement it.
+      </p>
+
+      <h3 class="text-xl font-semibold text-cyan-300">Learning Approach</h3>
+      <p class="text-slate-300 mb-4">
+        Our unique methodology combines visual learning, hands-on coding, and real-world applications. Every concept is explained with simple analogies before diving into code.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-medium text-white mb-2">Week 1-4: AI Fundamentals</h4>
+          <ul class="text-sm text-slate-300 space-y-1">
+            <li>• What is Artificial Intelligence?</li>
+            <li>• Machine Learning vs Deep Learning</li>
+            <li>• Types of ML problems</li>
+            <li>• Python programming basics</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-medium text-white mb-2">Week 5-8: Core ML</h4>
+          <ul class="text-sm text-slate-300 space-y-1">
+            <li>• Supervised Learning algorithms</li>
+            <li>• Model training & evaluation</li>
+            <li>• Feature engineering</li>
+            <li>• Data preprocessing</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-medium text-white mb-2">Week 9-12: Applications</h4>
+          <ul class="text-sm text-slate-300 space-y-1">
+            <li>• Real-world ML projects</li>
+            <li>• Model deployment basics</li>
+            <li>• Portfolio development</li>
+            <li>• Career preparation</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-medium text-white mb-2">Tools & Libraries</h4>
+          <ul class="text-sm text-slate-300 space-y-1">
+            <li>• Jupyter Notebooks</li>
+            <li>• Scikit-Learn ecosystem</li>
+            <li>• Pandas for data analysis</li>
+            <li>• Matplotlib & Seaborn</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-purple-500/10 to-cyan-500/10 p-6 rounded-lg">
+        <h3 class="text-lg font-semibold text-cyan-300 mb-3">What Makes This Course Different?</h3>
+        <ul class="text-slate-300 space-y-2">
+          <li><strong class="text-white">No Math Phobia:</strong> We explain concepts using visuals and analogies, not complex equations</li>
+          <li><strong class="text-white">Project-First Learning:</strong> Build real ML applications from day one</li>
+          <li><strong class="text-white">Industry Relevance:</strong> Learn the exact skills companies are looking for</li>
+          <li><strong class="text-white">Career Support:</strong> Resume building, interview prep, and job placement assistance</li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="magnetic-card p-8 rounded-2xl h-fit">
+      <h3 class="text-2xl font-bold mb-6">Program Snapshot</h3>
+      <ul class="space-y-4 text-lg">
+        <li class="flex justify-between"><span>Duration</span><span class="text-cyan-300">10–12 weeks</span></li>
+        <li class="flex justify-between"><span>Level</span><span class="text-green-300">Beginner</span></li>
+        <li class="flex justify-between"><span>Format</span><span class="text-purple-300">Live + Guided</span></li>
+        <li class="flex justify-between"><span>Certificate</span><span class="text-blue-300">Included</span></li>
+        <li class="flex justify-between"><span>Projects</span><span class="text-orange-300">4+</span></li>
+      </ul>
+      <div class="mt-6 pt-6 border-t border-slate-700">
+        <p class="text-sm text-slate-400">Instructor</p>
+        <p class="font-semibold mt-1">Shivam Kumar — AI Engineer & ML Expert</p>
+        <p class="text-sm text-slate-400 mt-2">5+ years experience at top tech companies</p>
+      </div>
+      <a href="contact.html" class="btn-liquid w-full mt-8 block text-center">Ask for Fee & Syllabus</a>
+    </aside>
+  </div>
+</section>
+
+<!-- PROJECTS SHOWCASE -->
+<section>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-6">Featured Projects You'll Build</h2>
+    <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+      Apply your ML knowledge to solve real problems. Each project builds upon previous concepts and results in a portfolio-ready application.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div class="magnetic-card rounded-2xl p-6">
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="trending-up" class="w-6 h-6 text-green-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">House Price Predictor</h3>
+        <p class="text-slate-300 mb-4">Build a machine learning model that predicts house prices based on location, size, and features. Learn regression algorithms and feature engineering.</p>
+        <div class="text-sm">
+          <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Linear Regression</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Data Cleaning</span>
+        </div>
+      </div>
+
+      <div class="magnetic-card rounded-2xl p-6">
+        <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="mail" class="w-6 h-6 text-blue-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Spam Email Classifier</h3>
+        <p class="text-slate-300 mb-4">Create an intelligent system that automatically classifies emails as spam or legitimate using natural language processing and classification algorithms.</p>
+        <div class="text-sm">
+          <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Naive Bayes</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Text Processing</span>
+        </div>
+      </div>
+
+      <div class="magnetic-card rounded-2xl p-6">
+        <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="users" class="w-6 h-6 text-orange-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Customer Segmentation</h3>
+        <p class="text-slate-300 mb-4">Use unsupervised learning to group customers based on their purchasing behavior. Apply K-means clustering and analyze customer patterns.</p>
+        <div class="text-sm">
+          <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">K-Means Clustering</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Unsupervised ML</span>
+        </div>
+      </div>
+
+      <div class="magnetic-card rounded-2xl p-6">
+        <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+          <i data-lucide="heart" class="w-6 h-6 text-red-300"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Disease Prediction Model</h3>
+        <p class="text-slate-300 mb-4">Develop a medical diagnosis assistant using patient data and symptoms. Learn about healthcare applications of machine learning.</p>
+        <div class="text-sm">
+          <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Decision Trees</span>
+          <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Medical Data</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="text-slate-400 text-sm">All projects include datasets, complete code, and deployment instructions</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER OUTCOMES -->
+<section>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-6">Launch Your AI/ML Career</h2>
+    <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+      Our graduates don't just learn AI concepts — they launch successful careers in machine learning and data science.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div class="text-center">
+        <div class="text-3xl font-bold text-cyan-300 mb-2">87%</div>
+        <p class="text-slate-300">Job placement rate within 3 months</p>
+      </div>
+      <div class="text-3xl font-bold text-purple-300 mb-2 text-center">78K</div>
+      <p class="text-slate-300 text-center">Average starting salary</p>
+      <div class="text-3xl font-bold text-blue-300 mb-2 text-center">200+</div>
+      <p class="text-slate-300 text-center">Partner companies hiring</p>
+      <div class="text-3xl font-bold text-green-300 mb-2 text-center">4.9/5</div>
+      <p class="text-slate-300 text-center">Student satisfaction rating</p>
+    </div>
+
+    <div class="text-center">
+      <h3 class="text-2xl font-semibold mb-6">Our graduates work at</h3>
+      <div class="flex flex-wrap justify-center gap-6 text-slate-400">
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Google AI</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Microsoft AI</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Tesla AI</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">OpenAI</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Meta AI</span>
+        <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Amazon ML</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="container mx-auto px-6 max-w-5xl text-center">
+    <h2 class="text-5xl font-bold mb-6">What learners say</h2>
+    <p class="text-lg text-slate-300 mb-12">Real feedback from real students who started with zero AI knowledge.</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="magnetic-card rounded-2xl p-8 text-left">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center mr-3">
+            <span class="text-purple-300 font-bold">S</span>
+          </div>
+          <div>
+            <p class="font-bold text-white">Sakshi Gupta</p>
+            <p class="text-sm text-slate-400">Data Analyst at Infosys</p>
+          </div>
+        </div>
+        <p class="italic text-slate-200">"Everything suddenly made sense. I now understand ML models clearly and can explain them to stakeholders."</p>
+      </div>
+      <div class="magnetic-card rounded-2xl p-8 text-left">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center mr-3">
+            <span class="text-cyan-300 font-bold">A</span>
+          </div>
+          <div>
+            <p class="font-bold text-white">Adarsh Tiwari</p>
+            <p class="text-sm text-slate-400">ML Engineer at Startup</p>
+          </div>
+        </div>
+        <p class="italic text-slate-200">"Pure intuition + coding. Exactly what I needed as a beginner. Now building ML features in production."</p>
+      </div>
+      <div class="magnetic-card rounded-2xl p-8 text-left">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mr-3">
+            <span class="text-green-300 font-bold">P</span>
+          </div>
+          <div>
+            <p class="font-bold text-white">Priya Jain</p>
+            <p class="text-sm text-slate-400">AI Consultant</p>
+          </div>
+        </div>
+        <p class="italic text-slate-200">"Projects boosted my confidence — now building ML apps in my startup and consulting for other companies."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container mx-auto px-6">
+    <div class="magnetic-card rounded-3xl px-10 py-14">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-4xl font-bold mb-4">Ready to Start Your AI Journey?</h2>
+        <p class="text-lg text-slate-300 mb-6">
+          Join our next cohort and transform your career with AI skills. Get personalized mentorship, hands-on projects, and direct job placement support.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+          <div class="text-sm text-slate-400">
+            <span class="block">Next batch starts: January 10, 2026</span>
+            <span class="block">Limited to 30 students per batch</span>
+          </div>
+          <div class="text-sm text-cyan-300 font-medium">
+            <span class="block">✓ 1-on-1 AI mentoring sessions</span>
+            <span class="block">✓ Portfolio ML projects</span>
+          </div>
+        </div>
+        <a href="contact.html" class="btn-liquid">Talk to AI Mentor & Reserve Your Spot</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-[#0e122a] border-t border-slate-800 text-slate-300 py-10 text-center">
+  &copy; 2025 Codechype — All Rights Reserved
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/918434457228?text=Hi%2C%20I%20want%20to%20know%20about%20the%20AI%20course."
+class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="32">
+</a>
+
+<script>
+lucide.createIcons();
+gsap.from("body",{opacity:0,duration:.65});
+gsap.registerPlugin(ScrollTrigger);
+gsap.from(".magnetic-card",{scrollTrigger:{trigger:".magnetic-card"},opacity:0,y:24,stagger:.12,duration:.7});
+</script>
+
+</body>
+</html>

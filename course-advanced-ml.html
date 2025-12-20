@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Advanced Machine Learning – Codechype</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:Inter,sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+}
+section{position:relative;z-index:10}
+.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.blob{
+  position:absolute;border-radius:9999px;filter:blur(120px);
+  animation:blob 18s infinite ease-in-out;
+}
+.blob1{background:#22c55e;width:420px;height:420px;top:-80px;left:-60px}
+.blob2{background:#6366f1;width:420px;height:420px;bottom:-80px;right:-60px;animation-delay:4s}
+.blob3{background:#a855f7;width:360px;height:360px;top:40%;left:40%;animation-delay:8s}
+@keyframes blob{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(60px,-40px)}
+}
+.card{
+  background:rgba(15,23,42,.9);
+  border:1px solid #1e293b;
+  border-radius:1.25rem;
+}
+.btn{
+  background:linear-gradient(135deg,#22c55e,#6366f1);
+  color:#fff;font-weight:700;
+  padding:.75rem 1.8rem;border-radius:999px;
+}
+.btn:hover{transform:translateY(-1px)}
+</style>
+</head>
+
+<body>
+
+<!-- Background blobs -->
+<div class="bg-blobs">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 bg-slate-950/80 backdrop-blur border-b border-slate-800 z-40">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a class="text-2xl font-extrabold">Codechype</a>
+    <nav class="hidden md:flex gap-8 text-sm">
+      <a href="index.html">Home</a>
+      <a href="courses.html" class="text-green-400">Courses</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn hidden md:inline-flex">Talk to Mentor</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="py-24 text-center">
+  <div class="max-w-6xl mx-auto">
+    <p class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-green-300/80 mb-4">
+      <span class="h-1 w-6 rounded-full bg-green-400"></span>
+      Advanced ML Mastery · Production-Ready · Industry Expert Guidance
+      <span class="h-1 w-6 rounded-full bg-indigo-400"></span>
+    </p>
+
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-green-100 to-indigo-200 bg-clip-text text-transparent">
+      Advanced Machine Learning Mastery
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-slate-200 mb-8 text-lg leading-relaxed">
+      Transform from ML practitioner to expert. Master advanced algorithms, deep learning architectures,
+      MLOps pipelines, and production deployment. Build systems that scale and perform in real-world environments.
+    </p>
+
+    <div class="max-w-4xl mx-auto mb-10">
+      <h2 class="text-xl font-semibold text-indigo-300 mb-6">What You'll Master</h2>
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700">
+          <div class="text-green-300 font-medium mb-2">Advanced Algorithms</div>
+          <div class="text-slate-400">Ensemble methods, gradient boosting, neural architectures, optimization techniques</div>
+        </div>
+        <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700">
+          <div class="text-green-300 font-medium mb-2">Production ML Systems</div>
+          <div class="text-slate-400">MLOps, model deployment, monitoring, A/B testing, scalable pipelines</div>
+        </div>
+        <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700">
+          <div class="text-green-300 font-medium mb-2">Real-World Applications</div>
+          <div class="text-slate-400">Computer vision, NLP, recommendation systems, time series forecasting</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+      <a href="contact.html" class="btn text-lg px-8 py-4">Start Your Advanced ML Journey</a>
+      <a href="#curriculum" class="inline-flex items-center gap-2 text-slate-200 hover:text-green-300 transition-colors text-lg">
+        <span>Explore Detailed Curriculum</span>
+        <i data-lucide="arrow-down" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap gap-4 justify-center text-sm text-slate-300">
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-full border border-slate-700">
+        <i data-lucide="clock" class="w-4 h-4 text-green-300"></i>
+        16–20 Weeks · Flexible Schedule
+      </span>
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-full border border-slate-700">
+        <i data-lucide="trending-up" class="w-4 h-4 text-indigo-300"></i>
+        Intermediate to Advanced Level
+      </span>
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-full border border-slate-700">
+        <i data-lucide="cpu" class="w-4 h-4 text-purple-300"></i>
+        GPU-Accelerated Training
+      </span>
+      <span class="inline-flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-full border border-slate-700">
+        <i data-lucide="zap" class="w-4 h-4 text-yellow-300"></i>
+        Production-Ready Projects
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <h2 class="text-3xl font-bold text-center mb-6">Why Choose Advanced ML?</h2>
+  <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+    This isn't just another ML course. It's designed for professionals who need to build and deploy ML systems that actually work in production.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-8 mb-16">
+    <div class="card p-8 group hover:border-green-500/50 transition-colors">
+      <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="brain" class="w-6 h-6 text-green-300"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Advanced Algorithms & Optimization</h3>
+      <p class="text-slate-300 mb-4">Master gradient boosting (XGBoost, LightGBM), neural architectures, hyperparameter tuning, and advanced optimization techniques that reduce training time by 10x.</p>
+      <ul class="text-sm text-slate-400 space-y-1">
+        <li>• Ensemble methods & stacking</li>
+        <li>• Bayesian optimization</li>
+        <li>• AutoML concepts</li>
+        <li>• Custom loss functions</li>
+      </ul>
+    </div>
+
+    <div class="card p-8 group hover:border-indigo-500/50 transition-colors">
+      <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="network" class="w-6 h-6 text-indigo-300"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-3">Deep Learning & Neural Networks</h3>
+      <p class="text-slate-300 mb-4">Build and train deep neural networks for computer vision, NLP, and sequence modeling. Learn modern architectures and transfer learning techniques.</p>
+      <ul class="text-sm text-slate-400 space-y-1">
+        <li>• CNNs, RNNs, Transformers</li>
+        <li>• Transfer learning & fine-tuning</li>
+        <li>• GPU acceleration with CUDA</li>
+        <li>• Model compression techniques</li>
+      </ul>
+    </div>
+
+    <div class="card p-8 group hover:border-purple-500/50 transition-colors">
+      <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="settings" class="w-6 h-6 text-purple-300"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-3">MLOps & Production Systems</h3>
+      <p class="text-slate-300 mb-4">Learn to deploy, monitor, and maintain ML models in production. Master the entire ML lifecycle from development to serving at scale.</p>
+      <ul class="text-sm text-slate-400 space-y-1">
+        <li>• Model deployment & APIs</li>
+        <li>• Monitoring & drift detection</li>
+        <li>• A/B testing frameworks</li>
+        <li>• CI/CD for ML pipelines</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Statistics Section -->
+  <div class="bg-gradient-to-r from-slate-900/80 to-slate-800/80 border border-slate-700 rounded-2xl p-8">
+    <h3 class="text-2xl font-bold text-center mb-8">Program Impact</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="text-3xl font-bold text-green-300 mb-2">94%</div>
+        <p class="text-slate-300 text-sm">Students land ML roles within 6 months</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-indigo-300 mb-2">$95K</div>
+        <p class="text-slate-300 text-sm">Average salary increase</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-purple-300 mb-2">200+</div>
+        <p class="text-slate-300 text-sm">Production projects completed</p>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-yellow-300 mb-2">4.9/5</div>
+        <p class="text-slate-300 text-sm">Advanced learner satisfaction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <div class="grid lg:grid-cols-[2fr_1fr] gap-10">
+    <div class="space-y-8">
+      <div class="card p-8">
+        <h2 class="text-3xl font-bold mb-4">Course Overview</h2>
+        <p class="text-slate-300 mb-6 leading-relaxed">
+          This advanced course bridges the gap between theoretical ML knowledge and real-world application.
+          You'll work on complex datasets, build scalable systems, and learn the engineering practices that
+          separate research prototypes from production ML solutions.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-semibold text-green-300 mb-3">Technical Focus</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+                Advanced algorithm implementation and optimization
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+                Deep learning model architecture design
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+                Production ML pipeline development
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0"></i>
+                Model monitoring and maintenance
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-indigo-300 mb-3">Industry Applications</h3>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0"></i>
+                Computer vision for autonomous systems
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0"></i>
+                NLP for conversational AI
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0"></i>
+                Recommendation engines at scale
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0"></i>
+                Time series forecasting systems
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who is this for -->
+      <div class="card p-8">
+        <h3 class="text-xl font-semibold mb-4">Who is this course for?</h3>
+        <div class="grid sm:grid-cols-2 gap-6 text-sm text-slate-300">
+          <div class="space-y-3">
+            <p class="inline-flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              ML engineers ready to level up their skills
+            </p>
+            <p class="inline-flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              Data scientists wanting production expertise
+            </p>
+            <p class="inline-flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              Software engineers entering ML/AI space
+            </p>
+          </div>
+          <div class="space-y-3">
+            <p class="inline-flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              Researchers wanting industry deployment skills
+            </p>
+            <p class="inline-flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              Tech leads managing ML teams
+            </p>
+            <p class="inline-flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              Anyone with 6+ months of ML experience
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="card p-8 h-fit">
+      <h3 class="text-xl font-bold mb-4">Program Snapshot</h3>
+      <ul class="space-y-3 text-slate-300">
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="clock" class="w-4 h-4 text-green-300"></i> Duration
+          </span>
+          <span class="text-slate-200 font-medium">16–20 Weeks</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="trending-up" class="w-4 h-4 text-green-300"></i> Level
+          </span>
+          <span class="text-slate-200 font-medium">Intermediate → Advanced</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="folder-open" class="w-4 h-4 text-green-300"></i> Projects
+          </span>
+          <span class="text-slate-200 font-medium">6+ Real-World</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="user" class="w-4 h-4 text-green-300"></i> Mentor
+          </span>
+          <span class="text-slate-200 font-medium">Shivam Kumar</span>
+        </li>
+        <li class="flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="cpu" class="w-4 h-4 text-green-300"></i> Tools
+          </span>
+          <span class="text-slate-200 font-medium">Python, TensorFlow, PyTorch</span>
+        </li>
+      </ul>
+      <div class="mt-6">
+        <a href="contact.html" class="btn w-full text-center block">Ask for Fee & Syllabus</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum" class="max-w-7xl mx-auto px-6 py-20">
+  <h2 class="text-3xl font-bold text-center mb-6">Comprehensive Curriculum Roadmap</h2>
+  <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+    A structured 16-20 week journey from intermediate ML concepts to advanced production systems.
+    Each module builds upon the previous, ensuring you master both theory and practical implementation.
+  </p>
+
+  <div class="space-y-8">
+    <!-- Phase 1: Advanced Algorithms -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+          <i data-lucide="zap" class="w-6 h-6 text-green-300"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Phase 1: Advanced Algorithms & Optimization</h3>
+          <p class="text-slate-400 text-sm">Weeks 1-4 • Build upon ML fundamentals</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-green-300 mb-2">Ensemble Methods</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Random Forests & Extra Trees</li>
+            <li>• Gradient Boosting (XGBoost, LightGBM)</li>
+            <li>• Stacking & blending techniques</li>
+            <li>• Ensemble diversity & correlation</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-green-300 mb-2">Hyperparameter Optimization</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Grid search & random search</li>
+            <li>• Bayesian optimization</li>
+            <li>• Hyperopt & Optuna frameworks</li>
+            <li>• Automated ML pipelines</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-green-300 mb-2">Advanced Metrics & Evaluation</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Precision-recall tradeoffs</li>
+            <li>• ROC-AUC deep dive</li>
+            <li>• Cross-validation strategies</li>
+            <li>• Model calibration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2: Deep Learning -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center">
+          <i data-lucide="brain" class="w-6 h-6 text-indigo-300"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Phase 2: Deep Learning & Neural Networks</h3>
+          <p class="text-slate-400 text-sm">Weeks 5-8 • Master modern neural architectures</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-indigo-300 mb-2">Neural Network Foundations</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Backpropagation & optimization</li>
+            <li>• Activation functions & initialization</li>
+            <li>• Batch normalization & dropout</li>
+            <li>• Loss functions & custom layers</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-indigo-300 mb-2">Computer Vision</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Convolutional Neural Networks</li>
+            <li>• Transfer learning with ResNet, VGG</li>
+            <li>• Object detection & segmentation</li>
+            <li>• Image augmentation techniques</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-indigo-300 mb-2">Natural Language Processing</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Recurrent Neural Networks</li>
+            <li>• Transformer architecture</li>
+            <li>• BERT & modern language models</li>
+            <li>• Text classification & generation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3: Production ML -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+          <i data-lucide="settings" class="w-6 h-6 text-purple-300"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Phase 3: MLOps & Production Systems</h3>
+          <p class="text-slate-400 text-sm">Weeks 9-16 • Deploy and maintain ML at scale</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-purple-300 mb-2">Model Deployment</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• REST API development with FastAPI</li>
+            <li>• Model serialization & versioning</li>
+            <li>• Docker containerization</li>
+            <li>• Cloud deployment (AWS, GCP)</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-purple-300 mb-2">ML Pipeline Engineering</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Apache Airflow & Prefect</li>
+            <li>• Feature engineering pipelines</li>
+            <li>• Data validation & monitoring</li>
+            <li>• Automated retraining systems</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-purple-300 mb-2">Production Monitoring</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• Model performance monitoring</li>
+            <li>• Data drift detection</li>
+            <li>• A/B testing frameworks</li>
+            <li>• Alerting & incident response</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 4: Capstone -->
+    <div class="card p-8">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+          <i data-lucide="trophy" class="w-6 h-6 text-yellow-300"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">Phase 4: Capstone Projects & Portfolio</h3>
+          <p class="text-slate-400 text-sm">Weeks 17-20 • Build production-ready ML systems</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-yellow-300 mb-2">Major Projects</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• End-to-end computer vision system</li>
+            <li>• Real-time recommendation engine</li>
+            <li>• Time series forecasting platform</li>
+            <li>• Custom NLP application</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/50 p-4 rounded-lg">
+          <h4 class="font-semibold text-yellow-300 mb-2">Portfolio Development</h4>
+          <ul class="text-sm text-slate-400 space-y-1">
+            <li>• GitHub repository management</li>
+            <li>• Technical documentation</li>
+            <li>• Model performance reports</li>
+            <li>• Deployment demonstrations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS SHOWCASE -->
+<section class="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-slate-900/60 to-slate-950/80">
+  <h2 class="text-3xl font-bold text-center mb-6">Featured Projects You'll Build</h2>
+  <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+    Apply advanced ML techniques to solve complex real-world problems. Each project demonstrates production-level skills and results in a deployable system.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+    <div class="card p-6 group hover:border-green-500/50 transition-colors">
+      <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="eye" class="w-6 h-6 text-green-300"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-3">Computer Vision Quality Control System</h3>
+      <p class="text-slate-300 mb-4">Build an automated defect detection system for manufacturing using CNNs and transfer learning. Deploy as a REST API with real-time monitoring.</p>
+      <div class="text-sm">
+        <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs">PyTorch</span>
+        <span class="bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded text-xs ml-2">Computer Vision</span>
+        <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">MLOps</span>
+      </div>
+    </div>
+
+    <div class="card p-6 group hover:border-indigo-500/50 transition-colors">
+      <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="message-square" class="w-6 h-6 text-indigo-300"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-3">Intelligent Customer Support Chatbot</h3>
+      <p class="text-slate-300 mb-4">Develop an NLP-powered chatbot using transformers for intent classification and response generation. Include A/B testing and performance monitoring.</p>
+      <div class="text-sm">
+        <span class="bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded text-xs">Transformers</span>
+        <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">NLP</span>
+        <span class="bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded text-xs ml-2">Production</span>
+      </div>
+    </div>
+
+    <div class="card p-6 group hover:border-purple-500/50 transition-colors">
+      <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="trending-up" class="w-6 h-6 text-purple-300"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-3">Scalable Recommendation Engine</h3>
+      <p class="text-slate-300 mb-4">Create a production recommendation system using collaborative filtering and deep learning. Implement feature engineering pipelines and automated retraining.</p>
+      <div class="text-sm">
+        <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs">TensorFlow</span>
+        <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs ml-2">Recommender Systems</span>
+        <span class="bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded text-xs ml-2">Pipelines</span>
+      </div>
+    </div>
+
+    <div class="card p-6 group hover:border-yellow-500/50 transition-colors">
+      <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+        <i data-lucide="activity" class="w-6 h-6 text-yellow-300"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-3">Time Series Forecasting Platform</h3>
+      <p class="text-slate-300 mb-4">Build an end-to-end forecasting system for business metrics using LSTMs and attention mechanisms. Include uncertainty quantification and model interpretability.</p>
+      <div class="text-sm">
+        <span class="bg-yellow-500/20 text-yellow-300 px-2 py-1 rounded text-xs">Time Series</span>
+        <span class="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs ml-2">LSTM</span>
+        <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Interpretability</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-12">
+    <p class="text-slate-400 text-sm">All projects include production deployment, monitoring dashboards, and comprehensive documentation</p>
+  </div>
+</section>
+
+<!-- CAREER OUTCOMES -->
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <h2 class="text-3xl font-bold text-center mb-6">Launch Your Advanced ML Career</h2>
+  <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
+    Our advanced graduates don't just get jobs — they become the experts companies compete for.
+    Join a community of ML engineers shaping the future of AI.
+  </p>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <div class="text-center">
+      <div class="text-3xl font-bold text-green-300 mb-2">94%</div>
+      <p class="text-slate-300">Job placement rate within 6 months</p>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-indigo-300 mb-2">$125K+</div>
+      <p class="text-slate-300">Average senior ML engineer salary</p>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-purple-300 mb-2">50+</div>
+      <p class="text-slate-300">Partner companies hiring</p>
+    </div>
+    <div class="text-center">
+      <div class="text-3xl font-bold text-yellow-300 mb-2">4.9/5</div>
+      <p class="text-slate-300">Advanced learner satisfaction</p>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <h3 class="text-2xl font-semibold mb-6">Our graduates work at</h3>
+    <div class="flex flex-wrap justify-center gap-6 text-slate-400">
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Google DeepMind</span>
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">OpenAI</span>
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Tesla AI</span>
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Meta Reality Labs</span>
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Netflix ML</span>
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Uber ATG</span>
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Amazon Q</span>
+      <span class="bg-slate-800/40 px-4 py-2 rounded-lg">Microsoft AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-24 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Ready to become an Advanced ML Expert?</h2>
+    <p class="text-slate-300 mb-8 max-w-2xl mx-auto">
+      Join hundreds of professionals who transformed their careers with our advanced ML program.
+      Get personalized guidance, industry connections, and the skills that top companies demand.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+      <a href="contact.html" class="btn text-lg px-8 py-4">Schedule a Consultation</a>
+      <a href="#curriculum" class="inline-flex items-center gap-2 text-slate-200 hover:text-green-300 transition-colors text-lg">
+        <span>Review Full Curriculum</span>
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+      </a>
+    </div>
+
+    <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6 max-w-2xl mx-auto">
+      <p class="text-sm text-slate-400 mb-4">What happens next?</p>
+      <div class="grid sm:grid-cols-3 gap-4 text-sm">
+        <div class="text-center">
+          <div class="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+            <span class="text-green-300 font-bold">1</span>
+          </div>
+          <p class="text-slate-300">Free consultation call</p>
+        </div>
+        <div class="text-center">
+          <div class="w-8 h-8 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+            <span class="text-indigo-300 font-bold">2</span>
+          </div>
+          <p class="text-slate-300">Custom learning plan</p>
+        </div>
+        <div class="text-center">
+          <div class="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+            <span class="text-purple-300 font-bold">3</span>
+          </div>
+          <p class="text-slate-300">Start your journey</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/918434457228?text=Hi%2C%20I%20want%20to%20know%20about%20the%20Advanced%20Machine%20Learning%20course."
+class="fixed bottom-6 right-6 bg-green-500 w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl">💬</a>
+
+<script>
+lucide.createIcons();
+gsap.registerPlugin(ScrollTrigger);
+gsap.from("section",{opacity:0,y:40,stagger:.15,duration:.7,scrollTrigger:{trigger:"section",start:"top 85%"}});
+</script>
+
+</body>
+</html>

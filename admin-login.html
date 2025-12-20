@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login - Codechype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+
+<div class="bg-white shadow-lg rounded-lg p-8 w-96">
+    <h2 class="text-2xl font-bold text-center mb-6">Admin Login</h2>
+
+    <input id="adminUser" type="text" placeholder="Username"
+        class="w-full border p-3 rounded mb-3">
+
+    <input id="adminPass" type="password" placeholder="Password"
+        class="w-full border p-3 rounded mb-3">
+
+    <button onclick="loginAdmin()"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white w-full p-3 rounded">
+        Login
+    </button>
+
+    <p id="errorMsg" class="text-red-500 text-center mt-3 hidden">
+        Invalid username or password
+    </p>
+</div>
+
+
+<script>
+function loginAdmin() {
+    const user = document.getElementById("adminUser").value;
+    const pass = document.getElementById("adminPass").value;
+
+    if (user === "admin" && pass === "admin@123") {
+        localStorage.setItem("adminLogin", "yes");
+        window.location.href = "dashboard.html"; 
+    } else {
+        document.getElementById("errorMsg").classList.remove("hidden");
+    }
+}
+</script>
+
+</body>
+</html>
