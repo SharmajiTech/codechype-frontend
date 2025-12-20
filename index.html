@@ -655,43 +655,236 @@ body {
             80% { transform: translateY(0) translateX(-30px) rotate(-6deg); opacity: 0.14; }
         }
 
-       /* WhatsApp Floating Button */
+    /* ===============================
+   WHATSAPP FLOAT – PREMIUM FIX
+   =============================== */
 .whatsapp-float {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
+  right: 18px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
   background-color: #25D366;
-  color: white;
+  color: #fff;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 9999;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+/* Hover only for desktop */
+@media (hover: hover) {
+  .whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow:
+      0 14px 35px rgba(37, 211, 102, 0.55);
+  }
 }
 
+/* Icon size */
 .whatsapp-float svg {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   fill: white;
 }
-@keyframes float-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+
+/* MOBILE SAFETY */
+@media (max-width: 640px) {
+  .whatsapp-float {
+    width: 48px;
+    height: 48px;
+    right: 16px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+  }
 }
 
-.whatsapp-float {
-  animation: float-bounce 3s ease-in-out infinite;
+
+/* ===============================
+   MOBILE RESPONSIVE FIX PACK
+   =============================== */
+@media (max-width: 640px) {
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* HERO TEXT FIX */
+  .typing-box {
+    width: auto !important;
+    max-width: 90vw;
+    white-space: normal;
+    font-size: clamp(1.4rem, 6vw, 2.2rem);
+    line-height: 1.3;
+    border-right: none;
+    text-align: center;
+  }
+
+  /* REMOVE HEAVY ANIMATIONS */
+  .hero-accent-circle,
+  .hero-tech-grid,
+  .code-float,
+  .falling-stars {
+    display: none !important;
+  }
+
+  /* COURSE SLIDER FIX */
+  #course-track {
+    gap: 1rem;
+  }
+
+  .course-card {
+    width: 85vw !important;
+  }
+
+  /* HIDE ARROWS ON MOBILE */
+  #scrollLeftBtn,
+  #scrollRightBtn {
+    display: none !important;
+  }
+
+  /* HERO BUTTON STACK */
+  .hero-premium-content > div:last-child {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* HEADER SPACING */
+  header .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* WHATSAPP BUTTON SAFE SIZE */
+  .whatsapp-float {
+    width: 48px;
+    height: 48px;
+    bottom: 18px;
+    right: 18px;
+  }
 }
+
+/* ===============================
+   MOBILE PREMIUM POLISH PACK
+   =============================== */
+@media (max-width: 640px) {
+
+  /* GLOBAL TYPOGRAPHY REFINEMENT */
+  body {
+    font-size: 15px;
+    line-height: 1.65;
+    letter-spacing: 0.2px;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.3px;
+  }
+
+  /* SECTION SPACING – BREATHING ROOM */
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* HERO SECTION POLISH */
+  .hero-premium {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  .hero-premium p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-top: 1rem;
+  }
+
+  /* PREMIUM BUTTON FEEL */
+  .gradient-btn-inner,
+  a.bg-gray-700,
+  a.bg-gradient-to-r {
+    padding: 0.75rem 1.4rem !important;
+    font-size: 0.95rem;
+    border-radius: 14px;
+  }
+
+  /* CARD DESIGN – PREMIUM MOBILE */
+  .bg-slate-900\/70,
+  .bg-slate-900\/50 {
+    border-radius: 18px !important;
+    padding: 1.25rem !important;
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  /* REMOVE AGGRESSIVE HOVER ON MOBILE */
+  .course-card:hover,
+  .bg-slate-900\/70:hover {
+    transform: none !important;
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.35) !important;
+  }
+
+  /* COURSE CARD PREMIUM LOOK */
+  .course-card img {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .course-card h3 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  .course-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  /* ICONS – SOFTER & ELEGANT */
+  i[data-lucide] {
+    stroke-width: 1.6;
+  }
+
+  /* TESTIMONIALS – MOBILE COMFORT */
+  .testimonial-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-card img {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* STATS SECTION – CLEAN GRID */
+  .grid.grid-cols-2.md\:grid-cols-4 {
+    gap: 1.5rem;
+  }
+
+  /* NAV MOBILE MENU PREMIUM */
+  #mobile-menu {
+    backdrop-filter: blur(14px);
+  }
+
+  #mobile-menu a {
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* WHATSAPP BUTTON – SUBTLE PREMIUM */
+  .whatsapp-float {
+    box-shadow: 
+      0 8px 20px rgba(0,0,0,0.35);
+  }
+}
+
+
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -717,13 +910,14 @@ body {
 
     <!-- HEADER -->
     <header class="bg-gradient-to-r from-[#041a3a] to-[#072f68] text-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 justify-between">
             <a href="index.html" class="flex items-center space-x-3">
                 <div class="logo-wrap relative">
                     <img src="codechypelogo.png" alt="Codechype Logo" class="h-10 w-10 rounded-full object-cover">
                     <div class="logo-shine" aria-hidden="true"></div>
                 </div>
-                <span class="text-2xl font-bold text-white hidden sm:inline">Codechype</span>
+                <span class="text-lg sm:text-2xl font-bold text-white tracking-wide">Codechype</span>
+
             </a>
 
             <nav class="hidden md:flex space-x-8">
@@ -777,15 +971,17 @@ body {
                 <div class="typing-wrapper">
                     <!-- Typing starts from center due to typing-box rules -->
                     <div class="typing-box">
-                        Unlock Your Potential. Master Coding with <br>Codechype.
+                         Unlock Your Potential.<br class="hidden sm:block">
+                          Master Coding with Codechype.
                     </div>
+
                 </div>
 
                 <p class="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow-md mt-6">
                     From absolute beginner to AI/ML specialist – Codechype offers project-based courses designed to build a professional portfolio and launch your tech career.
                 </p>
 
-                <div class="space-y-4 sm:space-y-0 sm:space-x-4 flex justify-center items-center">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="courses.html" class="gradient-btn inline-block">
                       <span class="gradient-btn-inner">Explore Courses</span>
                     </a>
@@ -1028,7 +1224,7 @@ body {
                 <div class="overflow-hidden">
                   <div id="course-track" class="flex gap-8 transition-transform duration-700 ease-in-out">
                     <!-- Course Cards with Enhanced Design -->
-                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-[85vw] sm:w-80 backdrop-blur">
                       <div class="relative">
                         <img src="pythonimg.avif" alt="Python Course" class="w-full h-48 object-cover">
                         <div class="absolute top-4 left-4">
@@ -1061,7 +1257,7 @@ body {
                       </div>
                     </div>
 
-                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-[85vw] sm:w-80 backdrop-blur">
                       <div class="relative">
                         <img src="dataimage.jpg" alt="Data Analytics" class="w-full h-48 object-cover">
                         <div class="absolute top-4 left-4">
@@ -1094,7 +1290,7 @@ body {
                       </div>
                     </div>
 
-                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-[85vw] sm:w-80 backdrop-blur">
                       <div class="relative">
                         <img src="aiimg.avif" alt="AI ML" class="w-full h-48 object-cover">
                         <div class="absolute top-4 left-4">
@@ -1127,7 +1323,7 @@ body {
                       </div>
                     </div>
 
-                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-[85vw] sm:w-80 backdrop-blur">
                       <div class="relative">
                         <img src="webdevimage.png" alt="Full Stack" class="w-full h-48 object-cover">
                         <div class="absolute top-4 left-4">
@@ -1160,7 +1356,7 @@ body {
                       </div>
                     </div>
 
-                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-[85vw] sm:w-80 backdrop-blur">
                       <div class="relative">
                         <img src="uiuximage.jpg" alt="UI UX" class="w-full h-48 object-cover">
                         <div class="absolute top-4 left-4">
@@ -1533,4 +1729,3 @@ body {
 </a>
 </body>
 </html>
-
