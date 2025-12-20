@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Codechype - Unlock Your Potential in Coding & AI/ML</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* base */
+        html, body { height: 100%; }
+body {
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0f1c 0%, #0f1419 25%, #0a0f1c 50%, #0f1419 75%, #0a0f1c 100%);
+            background-size: 400% 400%, 300% 300%, 500% 500%, 400% 400%;
+            animation: premium-bg-shift 25s ease-in-out infinite, floating-orbs 20s ease-in-out infinite;
+            color: #e2e8f0;
+            opacity: 0;
+            animation: page-fade-in 600ms ease forwards, premium-bg-shift 25s ease-in-out infinite, floating-orbs 20s ease-in-out infinite;
+        }
+        @keyframes page-fade-in {
+          to { opacity: 1; }
+        }
+
+        /* subtle patterned background class (kept) */
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 30px 30px;
+        }
+
+        /* course scroll (kept) */
+        @keyframes course-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-course-scroll { animation: course-scroll 35s linear infinite; }
+        #course-track:hover { animation-play-state: paused; }
+
+        
+
+        /* Animated gradient border button (improved) */
+        .gradient-btn {
+            position: relative;
+            display: inline-block;
+            padding: 3px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #4f46e5, #06b6d4, #06b6d4, #3b82f6);
+            background-size: 200% 200%;
+            animation: gradient-border 4s linear infinite;
+        }
+        @keyframes gradient-border { 0%{ background-position:0% 50% } 50%{ background-position:100% 50% } 100%{ background-position:0% 50% } }
+        .gradient-btn-inner {
+            background: linear-gradient(180deg,#0b254c 0%, #08305a 100%);
+            border-radius: 9px;
+            padding: 12px 28px;
+            display: inline-block;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(7,30,60,0.35);
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+        .gradient-btn:hover .gradient-btn-inner { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(7,50,90,0.35); }
+
+        /* typing animation that starts from center */
+        .typing-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .typing-box {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0ch;               /* animate from 0ch -> final */
+            max-width: 60ch;
+            border-right: 3px solid rgba(255,255,255,0.95);
+            font-weight:800;
+            font-size: clamp(1.7rem, 3.6vw, 3.6rem);
+            line-height: 1.05;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(90deg, #ffffff, #e6eefc);
+            animation:
+              typing-ch 3.6s steps(40, end) 0.2s forwards,
+              blink-caret 0.8s step-end infinite;
+            transform-origin: center;
+        }
+        @keyframes typing-ch { to { width: 40ch; } } /* adjust 40ch to desired length */
+        @keyframes blink-caret { 50% { border-color: transparent; } }
+
+        /* course-card hover lift + glow */
+        .course-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color .25s ease;
+            border-radius: 0.5rem;
+        }
+        .course-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 22px 50px rgba(11,37,88,0.18);
+            border-color: rgba(59,130,246,0.85) !important;
+        }
+
+        /* logo shine animation */
+        .logo-wrap { 
+            position: relative; 
+            display: inline-block;
+            animation: logo-float 3s ease-in-out infinite, logo-rotate 6s linear infinite;
+        }
+        .logo-wrap img {
+            transition: filter 0.3s ease;
+            animation: logo-glow 2s ease-in-out infinite;
+        }
+        .logo-wrap:hover img {
+            filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8));
+        }
+        .logo-shine {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            pointer-events: none;
+            background: linear-gradient(115deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.45) 45%, rgba(255,255,255,0.0) 60%);
+            transform: translateX(-120%) rotate(12deg);
+            filter: blur(8px);
+            animation: logo-shine 2.4s linear infinite;
+            opacity: 0.9;
+            mix-blend-mode: screen;
+            border-radius: 50%;
+        }
+        @keyframes logo-shine { 
+            0% { transform: translateX(-120%) rotate(12deg); } 
+            50% { transform: translateX(120%) rotate(12deg); } 
+            100% { transform: translateX(320%) rotate(12deg); } 
+        }
+        @keyframes logo-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes logo-rotate {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(360deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        @keyframes logo-glow {
+            0%, 100% { filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.4)); }
+            50% { filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.7)); }
+        }
+        /* reduce shine on small screens */
+        @media (max-width:640px){ .logo-shine{ display:none } }
+
+        /* testimonial auto-fade transitions */
+        .testimonials { position: relative; }
+        .testimonial-card { position: absolute; inset: 0; opacity: 0; transform: translateY(6px); transition: opacity .6s ease, transform .6s ease; display:flex; align-items:center; justify-content:center; }
+        .testimonial-card.show { opacity: 1; transform: translateY(0); position: relative; }
+        .testimonial-inner { max-width: 680px; padding: 24px; }
+
+        /* back to top button */
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 90px;
+            z-index: 1000;
+            background: linear-gradient(90deg,#0b254c,#08305a);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-shadow: 0 4px 20px rgba(2,6,23,0.4);
+            cursor:pointer;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all .3s ease;
+        }
+        .back-to-top.show { transform: translateY(0); opacity: 1; }
+        .back-to-top svg{ width:20px; height:20px; }
+
+        /* floating blobs tweaks - make colors softer and visible */
+        .blob-1 { background: rgba(35,140,237,0.20); }
+        .blob-2 { background: rgba(99,102,241,0.22); }
+        .blob-3 { background: rgba(139,92,246,0.20); }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.08); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 9s ease-in-out infinite; filter: blur(38px); }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+        /* Magnetic Card Effects */
+        .bg-slate-900\/70.border.border-slate-800,
+        .bg-slate-900\/50.border.border-slate-800 {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            cursor: pointer;
+        }
+
+        .bg-slate-900\/70.border.border-slate-800:hover,
+        .bg-slate-900\/50.border.border-slate-800:hover {
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(6, 182, 212, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Course cards have their own hover effects */
+        .course-card {
+            transition: all 0.3s ease-out !important;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(6, 182, 212, 0.3),
+                0 0 60px rgba(6, 182, 212, 0.1) !important;
+        }
+
+        /* Falling Stars Animation */
+        .falling-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        .star:nth-child(1) {
+            width: 3px;
+            height: 3px;
+            left: 10%;
+            animation-duration: 8s;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            width: 2px;
+            height: 2px;
+            left: 25%;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(3) {
+            width: 4px;
+            height: 4px;
+            left: 40%;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+
+        .star:nth-child(4) {
+            width: 2px;
+            height: 2px;
+            left: 55%;
+            animation-duration: 15s;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(5) {
+            width: 3px;
+            height: 3px;
+            left: 70%;
+            animation-duration: 9s;
+            animation-delay: 3s;
+        }
+
+        .star:nth-child(6) {
+            width: 2px;
+            height: 2px;
+            left: 85%;
+            animation-duration: 11s;
+            animation-delay: 5s;
+        }
+
+        .star:nth-child(7) {
+            width: 3px;
+            height: 3px;
+            left: 15%;
+            animation-duration: 13s;
+            animation-delay: 6s;
+        }
+
+        .star:nth-child(8) {
+            width: 2px;
+            height: 2px;
+            left: 35%;
+            animation-duration: 14s;
+            animation-delay: 7s;
+        }
+
+        .star:nth-child(9) {
+            width: 4px;
+            height: 4px;
+            left: 50%;
+            animation-duration: 7s;
+            animation-delay: 8s;
+        }
+
+        .star:nth-child(10) {
+            width: 2px;
+            height: 2px;
+            left: 65%;
+            animation-duration: 16s;
+            animation-delay: 9s;
+        }
+
+        .star:nth-child(11) {
+            width: 3px;
+            height: 3px;
+            left: 80%;
+            animation-duration: 10s;
+            animation-delay: 10s;
+        }
+
+        .star:nth-child(12) {
+            width: 2px;
+            height: 2px;
+            left: 5%;
+            animation-duration: 12s;
+            animation-delay: 11s;
+        }
+
+        .star:nth-child(13) {
+            width: 3px;
+            height: 3px;
+            left: 30%;
+            animation-duration: 8s;
+            animation-delay: 12s;
+        }
+
+        .star:nth-child(14) {
+            width: 2px;
+            height: 2px;
+            left: 45%;
+            animation-duration: 15s;
+            animation-delay: 13s;
+        }
+
+        .star:nth-child(15) {
+            width: 4px;
+            height: 4px;
+            left: 60%;
+            animation-duration: 9s;
+            animation-delay: 14s;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10px;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg) scale(1);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+                transform: translateX(20px) rotate(360deg) scale(0.8);
+            }
+        }
+
+        /* Premium Tech Hero Section */
+        .hero-premium {
+            background:
+                radial-gradient(circle at 30% 40%, rgba(6, 182, 212, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 70% 10%, rgba(168, 85, 247, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 50% 90%, rgba(59, 130, 246, 0.15) 0%, transparent 60%),
+                linear-gradient(135deg, #0f172a 0%, #1a1f3a 20%, #162d4a 40%, #1a1f3a 60%, #0f172a 80%, #0a1628 100%);
+            background-size: 300% 300%, 400% 400%, 500% 500%, 400% 400%;
+            animation: hero-premium-shift 30s ease-in-out infinite, hero-glow-pulse 15s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes premium-bg-shift {
+            0% {
+                background-position: 0% 50%, 0% 0%, 0% 100%, 0% 50%;
+                filter: hue-rotate(0deg) brightness(1);
+            }
+            25% {
+                background-position: 100% 0%, 100% 50%, 50% 0%, 100% 50%;
+                filter: hue-rotate(5deg) brightness(1.05);
+            }
+            50% {
+                background-position: 100% 100%, 50% 100%, 100% 50%, 100% 100%;
+                filter: hue-rotate(10deg) brightness(0.95);
+            }
+            75% {
+                background-position: 0% 100%, 0% 50%, 50% 100%, 0% 100%;
+                filter: hue-rotate(5deg) brightness(1.02);
+            }
+            100% {
+                background-position: 0% 50%, 0% 0%, 0% 100%, 0% 50%;
+                filter: hue-rotate(0deg) brightness(1);
+            }
+        }
+
+        @keyframes floating-orbs {
+            0% {
+                background-size: 400% 400%, 300% 300%, 500% 500%, 400% 400%;
+            }
+            33% {
+                background-size: 450% 350%, 350% 250%, 550% 450%, 450% 350%;
+            }
+            66% {
+                background-size: 350% 450%, 250% 350%, 450% 550%, 350% 450%;
+            }
+            100% {
+                background-size: 400% 400%, 300% 300%, 500% 500%, 400% 400%;
+            }
+        }
+        .hero-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 25% 45%, rgba(6, 182, 212, 0.25) 0%, transparent 60%),
+                radial-gradient(circle at 75% 25%, rgba(168, 85, 247, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 45% 85%, rgba(59, 130, 246, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.15) 0%, transparent 60%);
+            animation: premium-glow-shift 20s ease-in-out infinite;
+            z-index: 0;
+        }
+        @keyframes premium-glow-shift {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translate(30px, -40px) scale(1.1) rotate(5deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(-25px, 35px) scale(0.95) rotate(-3deg);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translate(15px, -20px) scale(1.05) rotate(2deg);
+                opacity: 0.75;
+            }
+            100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.6;
+            }
+        }
+        .hero-premium-content {
+            position: relative;
+            z-index: 10;
+        }
+        .hero-tech-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            animation: grid-move 25s linear infinite, grid-fade 6s ease-in-out infinite alternate;
+        }
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+        @keyframes grid-fade {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.7; }
+        }
+
+        @keyframes hero-premium-shift {
+            0% {
+                background-position: 0% 50%, 0% 0%, 0% 100%, 0% 50%;
+            }
+            20% {
+                background-position: 50% 0%, 30% 70%, 70% 30%, 50% 0%;
+            }
+            40% {
+                background-position: 100% 50%, 60% 40%, 40% 60%, 100% 50%;
+            }
+            60% {
+                background-position: 50% 100%, 90% 10%, 10% 90%, 50% 100%;
+            }
+            80% {
+                background-position: 30% 70%, 70% 30%, 30% 70%, 0% 50%;
+            }
+            100% {
+                background-position: 0% 50%, 0% 0%, 0% 100%, 0% 50%;
+            }
+        }
+
+        @keyframes hero-glow-pulse {
+            0%, 100% {
+                filter: brightness(1) contrast(1);
+            }
+            50% {
+                filter: brightness(1.1) contrast(1.05);
+            }
+        }
+        .hero-accent-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 2;
+            filter: blur(40px);
+        }
+        .accent-1 {
+            width: 500px;
+            height: 500px;
+            top: -150px;
+            left: -150px;
+            background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+            animation: float-circle-1 12s ease-in-out infinite;
+        }
+        .accent-2 {
+            width: 450px;
+            height: 450px;
+            bottom: -100px;
+            right: -100px;
+            background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+            animation: float-circle-2 14s ease-in-out infinite;
+        }
+        .accent-3 {
+            width: 380px;
+            height: 380px;
+            top: 20%;
+            right: 5%;
+            background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+            animation: float-circle-3 16s ease-in-out infinite;
+        }
+        @keyframes float-circle-1 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, -60px) rotate(90deg); }
+            50% { transform: translate(-40px, 50px) rotate(180deg); }
+            75% { transform: translate(60px, -30px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        @keyframes float-circle-2 {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-50px, 40px) scale(1.15); }
+            50% { transform: translate(30px, -50px) scale(0.9); }
+            75% { transform: translate(-20px, 30px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes float-circle-3 {
+            0% { transform: translate(0, 0); }
+            33% { transform: translate(-60px, 40px); }
+            66% { transform: translate(40px, -60px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Code Motion Animations */
+        .code-float {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 3;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .code-float-1 {
+            color: #3b82f6;
+            top: 15%;
+            left: 5%;
+            animation: float-code-1 8s ease-in-out infinite;
+        }
+        .code-float-2 {
+            color: #06b6d4;
+            top: 35%;
+            right: 8%;
+            animation: float-code-2 10s ease-in-out infinite;
+        }
+        .code-float-3 {
+            color: #a855f7;
+            bottom: 20%;
+            left: 12%;
+            animation: float-code-3 12s ease-in-out infinite;
+        }
+        .code-float-4 {
+            color: #3b82f6;
+            bottom: 15%;
+            right: 5%;
+            animation: float-code-4 9s ease-in-out infinite;
+        }
+        .code-float-5 {
+            color: #06b6d4;
+            top: 60%;
+            left: 20%;
+            animation: float-code-5 11s ease-in-out infinite;
+        }
+        @keyframes float-code-1 {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.08; }
+            25% { transform: translateY(-30px) translateX(20px) rotate(5deg); opacity: 0.18; }
+            50% { transform: translateY(-60px) translateX(-20px) rotate(10deg); opacity: 0.12; }
+            75% { transform: translateY(-30px) translateX(30px) rotate(-5deg); opacity: 0.15; }
+        }
+        @keyframes float-code-2 {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.1; }
+            25% { transform: translateY(40px) translateX(-30px) rotate(-8deg); opacity: 0.16; }
+            50% { transform: translateY(80px) translateX(20px) rotate(-12deg); opacity: 0.13; }
+            75% { transform: translateY(40px) translateX(-40px) rotate(6deg); opacity: 0.14; }
+        }
+        @keyframes float-code-3 {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.09; }
+            33% { transform: translateY(-50px) translateX(25px) rotate(8deg); opacity: 0.17; }
+            66% { transform: translateY(-80px) translateX(-35px) rotate(-10deg); opacity: 0.12; }
+        }
+        @keyframes float-code-4 {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.11; }
+            25% { transform: translateY(-35px) translateX(-25px) rotate(-6deg); opacity: 0.16; }
+            50% { transform: translateY(-70px) translateX(30px) rotate(8deg); opacity: 0.14; }
+            75% { transform: translateY(-35px) translateX(-20px) rotate(-4deg); opacity: 0.15; }
+        }
+        @keyframes float-code-5 {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.1; }
+            20% { transform: translateY(45px) translateX(30px) rotate(7deg); opacity: 0.16; }
+            40% { transform: translateY(90px) translateX(-25px) rotate(-9deg); opacity: 0.12; }
+            60% { transform: translateY(45px) translateX(35px) rotate(5deg); opacity: 0.17; }
+            80% { transform: translateY(0) translateX(-30px) rotate(-6deg); opacity: 0.14; }
+        }
+
+       /* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+@keyframes float-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.whatsapp-float {
+  animation: float-bounce 3s ease-in-out infinite;
+}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Falling Stars Background -->
+    <div class="falling-stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-[#041a3a] to-[#072f68] text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="logo-wrap relative">
+                    <img src="image/codechypelogo.png" alt="Codechype Logo" class="h-10 w-10 rounded-full object-cover">
+                    <div class="logo-shine" aria-hidden="true"></div>
+                </div>
+                <span class="text-2xl font-bold text-white hidden sm:inline">Codechype</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-blue-200 font-semibold hover:text-white transition">Home</a>
+                <a href="courses.html" class="hover:text-white transition">Courses</a>
+                <a href="about.html" class="hover:text-white transition">About Us</a>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            </nav>
+
+            <div class="hidden md:block">
+                <a href="courses.html" class="gradient-btn">
+                    <span class="gradient-btn-inner">Explore Courses</span>
+                </a>
+            </div>
+
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-8 text-xl">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 focus:outline-none">
+                <i data-lucide="x" class="w-8 h-8 text-white"></i>
+            </button>
+            <a href="index.html" class="text-blue-400 font-semibold">Home</a>
+            <a href="courses.html" class="text-white hover:text-blue-400 transition">Courses</a>
+            <a href="about.html" class="text-white hover:text-blue-400 transition">About Us</a>
+            <a href="contact.html" class="text-white hover:text-blue-400 transition">Contact</a>
+            <a href="courses.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg">
+                Enroll Now
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero-premium relative text-white text-center py-20 md:py-32 px-6 overflow-hidden">
+            <div class="hero-tech-grid" aria-hidden="true"></div>
+            <div class="hero-accent-circle accent-1" aria-hidden="true"></div>
+            <div class="hero-accent-circle accent-2" aria-hidden="true"></div>
+            <div class="hero-accent-circle accent-3" aria-hidden="true"></div>
+            
+            <!-- Code Motion Elements -->
+            <div class="code-float code-float-1" aria-hidden="true">def learn():</div>
+            <div class="code-float code-float-2" aria-hidden="true">import AI</div>
+            <div class="code-float code-float-3" aria-hidden="true">for skill in code:</div>
+            <div class="code-float code-float-4" aria-hidden="true">return success()</div>
+            <div class="code-float code-float-5" aria-hidden="true">class Developer:</div>
+            
+            <div class="container mx-auto hero-premium-content">
+                <div class="typing-wrapper">
+                    <!-- Typing starts from center due to typing-box rules -->
+                    <div class="typing-box">
+                        Unlock Your Potential. Master Coding with <br>Codechype.
+                    </div>
+                </div>
+
+                <p class="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow-md mt-6">
+                    From absolute beginner to AI/ML specialist – Codechype offers project-based courses designed to build a professional portfolio and launch your tech career.
+                </p>
+
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4 flex justify-center items-center">
+                    <a href="courses.html" class="gradient-btn inline-block">
+                      <span class="gradient-btn-inner">Explore Courses</span>
+                    </a>
+                    <a href="about.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-transform duration-300 inline-block">
+                        Meet Our Mentors
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY -->
+        <section class="relative py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-2 text-white">Why Choose Codechype?</h2>
+                <p class="text-slate-300 mb-12 max-w-2xl mx-auto">We're more than just coding. We build careers through practical, hands-on experience and personalized mentorship.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur hover:bg-slate-800/70 transition-all duration-300">
+                        <div class="bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="briefcase" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">Project-Based Mastery</h3>
+                        <p class="text-slate-300 mb-4">Build a robust portfolio by creating real-world projects, not just completing theoretical exercises.</p>
+                        <ul class="text-left space-y-2 text-sm text-slate-400">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>10+ Real-world projects</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Portfolio-ready code</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Industry best practices</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur hover:bg-slate-800/70 transition-all duration-300">
+                        <div class="bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="brain-circuit" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">AI & ML Focus</h3>
+                        <p class="text-slate-300 mb-4">Specialized tracks in Artificial Intelligence and Machine Learning to prepare you for cutting-edge roles.</p>
+                        <ul class="text-left space-y-2 text-sm text-slate-400">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>TensorFlow & PyTorch</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Computer vision projects</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>NLP applications</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur hover:bg-slate-800/70 transition-all duration-300">
+                        <div class="bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="users" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-white">Expert Mentorship</h3>
+                        <p class="text-slate-300 mb-4">Learn directly from industry professionals with personalized guidance and a supportive community.</p>
+                        <ul class="text-left space-y-2 text-sm text-slate-400">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>1-on-1 weekly sessions</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Code reviews & feedback</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Career guidance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Additional Benefits Section -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 text-center">
+                        <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-green-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-white mb-2">Career Growth</h4>
+                        <p class="text-sm text-slate-400">85% of graduates land tech jobs within 6 months</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 text-center">
+                        <div class="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="clock" class="w-6 h-6 text-blue-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-white mb-2">Flexible Learning</h4>
+                        <p class="text-sm text-slate-400">Learn at your own pace with lifetime access</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 text-center">
+                        <div class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="award" class="w-6 h-6 text-purple-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-white mb-2">Certification</h4>
+                        <p class="text-sm text-slate-400">Industry-recognized certificates upon completion</p>
+                    </div>
+                    <div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6 text-center">
+                        <div class="bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="users" class="w-6 h-6 text-orange-400"></i>
+                        </div>
+                        <h4 class="font-semibold text-white mb-2">Community</h4>
+                        <p class="text-sm text-slate-400">Join 5000+ learners in our active community</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPROACH -->
+        <section class="relative py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-2 text-white">Our Project-Based Learning Approach</h2>
+                <p class="text-slate-300 mb-12 max-w-2xl mx-auto">See how Codechype turns aspiring coders into confident developers ready for the job market.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur text-center">
+                        <div class="bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="book-open" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        <div class="bg-cyan-500/20 text-cyan-400 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mb-4 mx-auto">1</div>
+                        <h3 class="text-xl font-semibold mb-3 text-white">Learn Core Concepts</h3>
+                        <p class="text-slate-300 mb-4">Start with fundamental programming concepts in Python, data structures, and algorithms.</p>
+                        <ul class="text-left space-y-2 text-sm text-slate-400">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Python fundamentals</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Data structures & algorithms</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Problem-solving techniques</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur text-center">
+                        <div class="bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="code" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        <div class="bg-cyan-500/20 text-cyan-400 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mb-4 mx-auto">2</div>
+                        <h3 class="text-xl font-semibold mb-3 text-white">Build Real Projects</h3>
+                        <p class="text-slate-300 mb-4">Apply what you learn by building multiple full-stack applications, data dashboards, or AI models.</p>
+                        <ul class="text-left space-y-2 text-sm text-slate-400">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Web applications</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Data visualization</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>AI/ML models</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur text-center">
+                        <div class="bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="rocket" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        <div class="bg-cyan-500/20 text-cyan-400 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mb-4 mx-auto">3</div>
+                        <h3 class="text-xl font-semibold mb-3 text-white">Showcase & Launch</h3>
+                        <p class="text-slate-300 mb-4">Develop a professional portfolio of your projects, refine your resume, and get career guidance.</p>
+                        <ul class="text-left space-y-2 text-sm text-slate-400">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Portfolio development</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Resume optimization</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                <span>Interview preparation</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Learning Outcomes -->
+                <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-white">What You'll Achieve</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="code" class="w-8 h-8 text-green-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Coding Proficiency</h4>
+                            <p class="text-sm text-slate-400">Write clean, efficient code that solves real problems</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="briefcase" class="w-8 h-8 text-blue-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Job-Ready Skills</h4>
+                            <p class="text-sm text-slate-400">Master the technologies employers are looking for</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="users" class="w-8 h-8 text-purple-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Professional Network</h4>
+                            <p class="text-sm text-slate-400">Connect with mentors and peers in the industry</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COURSES TRACK -->
+        <section class="relative py-20 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 text-white">Our Popular Courses</h2>
+                    <p class="text-slate-300 max-w-2xl mx-auto">Choose from our comprehensive curriculum designed to take you from beginner to industry-ready professional</p>
+                </div>
+
+                <button id="scrollLeftBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-cyan-600 hover:bg-cyan-700 text-white p-3 rounded-full shadow-lg z-20 transition-all duration-300">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button id="scrollRightBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-cyan-600 hover:bg-cyan-700 text-white p-3 rounded-full shadow-lg z-20 transition-all duration-300">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+
+                <div class="overflow-hidden">
+                  <div id="course-track" class="flex gap-8 transition-transform duration-700 ease-in-out">
+                    <!-- Course Cards with Enhanced Design -->
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                      <div class="relative">
+                        <img src="image/pythonimg.avif" alt="Python Course" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-cyan-500/90 text-white text-xs py-1 px-3 rounded-full font-semibold backdrop-blur">Beginner Friendly</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="bg-yellow-500/90 text-white text-xs py-1 px-2 rounded-full flex items-center gap-1">
+                                <i data-lucide="star" class="w-3 h-3"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white">Python Programming Kickstart</h3>
+                        <p class="text-slate-300 mb-4">Start your coding journey with Python, the most versatile language for beginners.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                <span>8 weeks</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="users" class="w-4 h-4"></i>
+                                <span>500+ students</span>
+                            </div>
+                        </div>
+                        <a href="course-python-beginner.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-600 hover:to-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                      <div class="relative">
+                        <img src="image/dataimage.jpg" alt="Data Analytics" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-green-500/90 text-white text-xs py-1 px-3 rounded-full font-semibold backdrop-blur">Intermediate</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="bg-yellow-500/90 text-white text-xs py-1 px-2 rounded-full flex items-center gap-1">
+                                <i data-lucide="star" class="w-3 h-3"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white">Data Analytics with Python & SQL</h3>
+                        <p class="text-slate-300 mb-4">Uncover insights from data using Pandas, NumPy, and SQL. Build dashboards and reports.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                <span>10 weeks</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="users" class="w-4 h-4"></i>
+                                <span>300+ students</span>
+                            </div>
+                        </div>
+                        <a href="course-data-analytics.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                      <div class="relative">
+                        <img src="image/aiimg.avif" alt="AI ML" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-red-500/90 text-white text-xs py-1 px-3 rounded-full font-semibold backdrop-blur">Beginner</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="bg-yellow-500/90 text-white text-xs py-1 px-2 rounded-full flex items-center gap-1">
+                                <i data-lucide="star" class="w-3 h-3"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white">Foundations of AI & Machine Learning</h3>
+                        <p class="text-slate-300 mb-4">Demystify AI & ML through beginner-friendly projects and hands-on experience.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                <span>12 weeks</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="users" class="w-4 h-4"></i>
+                                <span>400+ students</span>
+                            </div>
+                        </div>
+                        <a href="course-ai-ml-beginner.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                      <div class="relative">
+                        <img src="image/webdevimage.png" alt="Full Stack" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-yellow-500/90 text-white text-xs py-1 px-3 rounded-full font-semibold backdrop-blur">Advanced</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="bg-yellow-500/90 text-white text-xs py-1 px-2 rounded-full flex items-center gap-1">
+                                <i data-lucide="star" class="w-3 h-3"></i>
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white">Full Stack Web Development</h3>
+                        <p class="text-slate-300 mb-4">Learn frontend & backend together: HTML, CSS, JS, React, and Node.js.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                <span>16 weeks</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="users" class="w-4 h-4"></i>
+                                <span>250+ students</span>
+                            </div>
+                        </div>
+                        <a href="course-full-stack.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="course-card bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden flex-shrink-0 w-80 backdrop-blur">
+                      <div class="relative">
+                        <img src="image/uiuximage.jpg" alt="UI UX" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-purple-500/90 text-white text-xs py-1 px-3 rounded-full font-semibold backdrop-blur">Creative</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <div class="bg-yellow-500/90 text-white text-xs py-1 px-2 rounded-full flex items-center gap-1">
+                                <i data-lucide="star" class="w-3 h-3"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-white">UI/UX Design Essentials</h3>
+                        <p class="text-slate-300 mb-4">Design user-friendly, attractive interfaces using Figma and modern design principles.</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                <span>8 weeks</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-slate-400">
+                                <i data-lucide="users" class="w-4 h-4"></i>
+                                <span>180+ students</span>
+                            </div>
+                        </div>
+                        <a href="course-ui-ux.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="text-center mt-12">
+                  <a href="courses.html" class="bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-600 hover:to-indigo-600 text-white font-bold py-3 px-8 rounded-xl text-lg inline-block shadow-lg transition-all duration-300 hover:scale-105">
+                    <span>Explore All Courses</span>
+                  </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS: auto-fade (replaced the slide) -->
+        <section class="relative py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 text-white">What Our Students Say</h2>
+                <p class="text-slate-300 mb-8 max-w-2xl mx-auto">Hear from the developers who unlocked their potential with Codechype.</p>
+
+                <div class="testimonials relative overflow-hidden mb-12">
+                    <div class="testimonial-card show testimonial-0">
+                        <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur mx-auto max-w-2xl">
+                            <div class="flex items-center justify-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <img class="w-16 h-16 rounded-full mx-auto mb-4 object-cover" src="https://placehold.co/100x100/d1d5db/374151?text=A" alt="Aditya Sharma">
+                            <p class="text-slate-100 italic mb-4 text-lg">"Codechype transformed my career! The project-based approach gave me confidence and skills that actually matter in the job market."</p>
+                            <h4 class="font-bold text-white text-lg">- Aditya Sharma</h4>
+                            <p class="text-sm text-slate-400">Junior Data Scientist at TechCorp</p>
+                            <p class="text-xs text-cyan-400 mt-2">Completed Python & Data Analytics courses</p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card testimonial-1">
+                        <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur mx-auto max-w-2xl">
+                            <div class="flex items-center justify-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <img class="w-16 h-16 rounded-full mx-auto mb-4 object-cover" src="https://placehold.co/100x100/d1d5db/374151?text=M" alt="Maya Singh">
+                            <p class="text-slate-100 italic mb-4 text-lg">"The AI/ML course was amazing. The mentor simplified even complex topics beautifully. Now I work at a leading AI startup!"</p>
+                            <h4 class="font-bold text-white text-lg">- Maya Singh</h4>
+                            <p class="text-sm text-slate-400">AI Engineer at InnovateAI</p>
+                            <p class="text-xs text-cyan-400 mt-2">Completed AI/ML Foundations course</p>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card testimonial-2">
+                        <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-8 backdrop-blur mx-auto max-w-2xl">
+                            <div class="flex items-center justify-center mb-4">
+                                <div class="flex text-yellow-400">
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                    <i data-lucide="star" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <img class="w-16 h-16 rounded-full mx-auto mb-4 object-cover" src="https://placehold.co/100x100/d1d5db/374151?text=K" alt="Krish Patel">
+                            <p class="text-slate-100 italic mb-4 text-lg">"As a beginner, I felt supported throughout. Python for Beginners set me up for success and got me my first developer job!"</p>
+                            <h4 class="font-bold text-white text-lg">- Krish Patel</h4>
+                            <p class="text-sm text-slate-400">Web Developer at StartupXYZ</p>
+                            <p class="text-xs text-cyan-400 mt-2">Completed Python & Full Stack courses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Stats -->
+                <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-8 text-white">Our Impact in Numbers</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-cyan-400 mb-2">500+</div>
+                            <p class="text-slate-300 text-sm">Students Trained</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-400 mb-2">85%</div>
+                            <p class="text-slate-300 text-sm">Job Placement Rate</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-purple-400 mb-2">4.8/5</div>
+                            <p class="text-slate-300 text-sm">Average Rating</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-orange-400 mb-2">50+</div>
+                            <p class="text-slate-300 text-sm">Partner Companies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative py-20 px-6">
+            <div class="container mx-auto text-center">
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-12 backdrop-blur max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold mb-6 text-white">Ready to Transform Your Career?</h2>
+                    <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Join Codechype's growing community of developers and build the future, one project at a time.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                            <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="users" class="w-6 h-6 text-green-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Expert Community</h4>
+                            <p class="text-sm text-slate-400">Connect with 5000+ learners and industry professionals</p>
+                        </div>
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                            <div class="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="book-open" class="w-6 h-6 text-blue-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Lifetime Access</h4>
+                            <p class="text-sm text-slate-400">Learn at your own pace with lifetime course access</p>
+                        </div>
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+                            <div class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                                <i data-lucide="award" class="w-6 h-6 text-purple-400"></i>
+                            </div>
+                            <h4 class="font-semibold text-white mb-2">Career Support</h4>
+                            <p class="text-sm text-slate-400">Resume reviews, interview prep, and job placement assistance</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="contact.html" class="bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-600 hover:to-indigo-600 text-white font-bold py-4 px-8 rounded-xl text-lg inline-block shadow-lg transition-all duration-300 hover:scale-105">
+                            Get Started Today!
+                        </a>
+                        <a href="courses.html" class="bg-slate-700/50 hover:bg-slate-600/50 border border-slate-600 text-white font-semibold py-4 px-8 rounded-xl text-lg inline-block transition-all duration-300">
+                            Browse Courses
+                        </a>
+                    </div>
+
+                    <p class="text-sm text-slate-400 mt-6">No prior experience required • Start your journey today</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900/90 border-t border-slate-800 text-white backdrop-blur">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-white">Codechype</h3>
+                    <p class="text-slate-400">Your launchpad into the world of technology, powered by project-based learning. Unlock your coding potential!</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors"><i data-lucide="twitter"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors"><i data-lucide="github"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="text-slate-400 hover:text-cyan-400 transition-colors">Courses</a></li>
+                        <li><a href="about.html" class="text-slate-400 hover:text-cyan-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-slate-400 hover:text-cyan-400 transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Popular Courses</h3>
+                    <ul class="space-y-2">
+                        <li><a href="course-python-beginner.html" class="text-slate-400 hover:text-cyan-400 transition-colors">Python Kickstart</a></li>
+                        <li><a href="course-data-analytics.html" class="text-slate-400 hover:text-cyan-400 transition-colors">Data Analytics</a></li>
+                        <li><a href="course-ai-ml-beginner.html" class="text-slate-400 hover:text-cyan-400 transition-colors">AI & ML Foundations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Contact Info</h3>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+                            <span>hello@codechype.com</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
+                            <span>+91 84344 57228</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
+                            <span>Remote Learning</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-6 text-center text-slate-500">
+                <p>&copy; 2025 Codechype. All Rights Reserved. | Made with <span class="text-red-400">♥</span> for aspiring developers</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <!-- Back to top -->
+    <div id="backToTop" class="back-to-top" title="Back to top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
+    </div>
+
+    <!-- Floating Blobs Background (adjusted colors so they are visible) -->
+    <div class="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        <div class="absolute top-10 left-10 w-72 h-72 rounded-full mix-blend-multiply opacity-75 blob-1 animate-blob"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 rounded-full mix-blend-multiply opacity-75 blob-2 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/3 w-72 h-72 rounded-full mix-blend-multiply opacity-75 blob-3 animate-blob animation-delay-4000"></div>
+    </div>
+
+
+    <script>
+        // lucide icons
+        lucide.createIcons();
+
+        // Mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.remove('hidden'); });
+        closeMobileMenuButton.addEventListener('click', () => { mobileMenu.classList.add('hidden'); });
+
+        // COURSE TRACK - keep existing behavior but safe-guard DOM calls
+        const courseTrack = document.getElementById('course-track');
+        const leftBtn = document.getElementById('scrollLeftBtn');
+        const rightBtn = document.getElementById('scrollRightBtn');
+        if (courseTrack) {
+            // duplicate elements only once
+            try { courseTrack.innerHTML += courseTrack.innerHTML; } catch(e){/* ignore */ }
+            let currentTranslate = 0;
+            const step = 300;
+            function pauseAutoScroll() { courseTrack.style.animationPlayState = 'paused'; }
+            leftBtn && leftBtn.addEventListener('click', () => { pauseAutoScroll(); currentTranslate += step; courseTrack.style.transform = `translateX(${currentTranslate}px)`; });
+            rightBtn && rightBtn.addEventListener('click', () => { pauseAutoScroll(); currentTranslate -= step; courseTrack.style.transform = `translateX(${currentTranslate}px)`; });
+        }
+
+        // COURSE auto-smooth small scroller (keeps your original auto scroll but improved)
+        const track = document.getElementById('course-track');
+        if (track) {
+            let scrollPos = 0;
+            const stepPx = 320;
+            let autoScroll;
+            function startAutoScroll() {
+              autoScroll = setInterval(() => {
+                scrollPos -= 1; // gentle
+                track.style.transform = `translateX(${scrollPos}px)`;
+                const totalWidth = track.scrollWidth / 2;
+                if (Math.abs(scrollPos) > totalWidth) scrollPos = 0;
+              }, 16);
+            }
+            function pauseAutoScroll() { clearInterval(autoScroll); }
+            document.addEventListener('mouseup', ()=> { clearTimeout(window.restartTimer); window.restartTimer = setTimeout(startAutoScroll, 5000); });
+            startAutoScroll();
+        }
+
+        // TESTIMONIALS: fade between testimonial-card elements
+        (function() {
+            const items = Array.from(document.querySelectorAll('.testimonial-card'));
+            let idx = 0;
+            function show(i){
+                items.forEach((el, j) => { if(j===i){ el.classList.add('show'); } else { el.classList.remove('show'); } });
+            }
+            if(items.length>0){
+                show(0);
+                setInterval(() => {
+                    idx = (idx+1) % items.length;
+                    show(idx);
+                }, 4500);
+            }
+        })();
+
+        // BACK TO TOP button behaviour
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 360) backToTop.classList.add('show'); else backToTop.classList.remove('show');
+        });
+        backToTop.addEventListener('click', () => { window.scrollTo({ top:0, behavior:'smooth' }); });
+
+        // small accessibility: allow keyboard to close mobile menu
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') mobileMenu.classList.add('hidden'); });
+
+        // Magnetic Card Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.bg-slate-900\\/70.border.border-slate-800, .bg-slate-900\\/50.border.border-slate-800');
+
+            cards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+
+                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                });
+            });
+
+            // Enhanced mouse tracking for subtle parallax effect
+            let mouseX = 0;
+            let mouseY = 0;
+
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX / window.innerWidth;
+                mouseY = e.clientY / window.innerHeight;
+
+                // Apply subtle parallax to floating elements
+                const floatingElements = document.querySelectorAll('.code-float, .blob-1, .blob-2, .blob-3');
+                floatingElements.forEach((element, index) => {
+                    const speed = (index + 1) * 0.5;
+                    const x = (mouseX - 0.5) * speed;
+                    const y = (mouseY - 0.5) * speed;
+                    element.style.transform += ` translate(${x}px, ${y}px)`;
+                });
+            });
+        });
+
+    </script>
+      <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/918434457228?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20your%20courses."
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+   <!-- WhatsApp SVG icon -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+     <path d="M16.002 3C9.383 3 4 8.383 4 15.002c0 2.636.775 5.101 2.109 7.172L4 29l7.004-2.072A11.9 11.9 0 0016.002 27C22.617 27 28 21.617 28 15.002 28 8.383 22.617 3 16.002 3zm0 22.32a9.287 9.287 0 01-4.73-1.3l-.34-.2-4.158 1.23 1.23-4.047-.22-.34a9.314 9.314 0 01-1.466-5.035c0-5.147 4.186-9.332 9.332-9.332 5.147 0 9.332 4.185 9.332 9.332s-4.185 9.332-9.332 9.332zm5.027-6.972c-.273-.137-1.62-.803-1.872-.893-.252-.093-.435-.137-.616.136-.183.273-.708.894-.867 1.08-.159.183-.32.205-.593.068-.273-.137-1.153-.426-2.197-1.36-.812-.725-1.36-1.62-1.518-1.893-.159-.273-.017-.421.12-.558.123-.123.273-.32.41-.478.136-.159.183-.273.273-.456.09-.183.045-.341-.023-.478-.068-.136-.616-1.483-.845-2.034-.223-.536-.451-.464-.616-.472l-.523-.01c-.182 0-.478.068-.73.341-.252.273-.961.941-.961 2.293s.983 2.66 1.12 2.847c.137.183 1.935 2.958 4.69 4.147.656.283 1.168.452 1.566.58.658.21 1.257.18 1.73.11.527-.078 1.62-.66 1.85-1.298.228-.637.228-1.182.159-1.298-.068-.115-.25-.183-.523-.32z"/>
+   </svg>
+</a>
+</body>
+</html>
