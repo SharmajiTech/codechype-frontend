@@ -146,6 +146,312 @@
 .whatsapp-float {
   animation: float-bounce 3s ease-in-out infinite;
 }
+
+/* ===============================
+   MOBILE PREMIUM POLISH – COURSES
+   =============================== */
+@media (max-width: 640px) {
+
+  /* GLOBAL CALM */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    font-size: 15px;
+    line-height: 1.65;
+    background-color: #f8fafc;
+  }
+
+  /* HEADER – BRAND FEELS STRONG */
+  header .container {
+    padding: 0.75rem 1rem;
+  }
+
+  header img {
+    width: 36px;
+    height: 36px;
+  }
+
+  header span {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* SECTION SPACING – AIR */
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  /* PAGE HERO */
+  section[style*="background-color"] h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  section[style*="background-color"] p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  /* COURSE GRID – MOBILE CARD FEEL */
+  .grid {
+    gap: 1.25rem !important;
+  }
+
+  /* COURSE CARDS */
+  .bg-white.rounded-lg,
+  .bg-white.rounded-xl {
+    border-radius: 18px !important;
+    box-shadow:
+      0 10px 25px rgba(0,0,0,0.08);
+    transform: none !important;
+  }
+
+  /* REMOVE HOVER LIFT ON MOBILE */
+  .hover-lift:hover,
+  .transform:hover {
+    transform: none !important;
+  }
+
+  /* COURSE IMAGES */
+  .bg-white img {
+    height: 180px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  /* COURSE TEXT */
+  .bg-white h3 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+  .bg-white p {
+    font-size: 0.9rem;
+    color: #475569;
+  }
+
+  /* BUTTONS – TOUCH FRIENDLY */
+  a.inline-flex,
+  a.bg-blue-600,
+  a.bg-gradient-to-r {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 14px;
+  }
+
+  /* ICON SOFTNESS */
+  i[data-lucide] {
+    stroke-width: 1.6;
+  }
+
+  /* FEATURES SECTION – LESS DRAMA */
+  .animate-fade-in-up,
+  .animate-fade-in-left,
+  .animate-fade-in-right,
+  .animate-bounce,
+  .animate-pulse {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* STATS & TESTIMONIAL CARDS */
+  .shadow-lg {
+    box-shadow:
+      0 8px 22px rgba(0,0,0,0.08);
+  }
+
+  /* CTA SECTION TEXT */
+  section.bg-gradient-to-r h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  section.bg-gradient-to-r p {
+    font-size: 0.95rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+  }
+
+  footer .grid {
+    gap: 2rem;
+  }
+
+  /* WHATSAPP – CLEAN & STILL */
+  .whatsapp-float {
+    width: 48px;
+    height: 48px;
+    right: 16px;
+    bottom: 16px;
+    animation: none !important;
+  }
+}
+
+/* =========================================
+   APPLE-STYLE CARD (PURE LIGHT • MOBILE)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  /* Apple page background */
+  body {
+    background-color: #f9fafb;
+  }
+
+  /* Core Apple Card */
+  .apple-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 1.25rem;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow:
+      0 6px 16px rgba(15, 23, 42, 0.06),
+      0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: box-shadow 0.25s ease;
+  }
+
+  /* No hover drama on mobile */
+  .apple-card:hover {
+    box-shadow:
+      0 8px 20px rgba(15, 23, 42, 0.08),
+      0 2px 4px rgba(15, 23, 42, 0.05);
+  }
+
+  /* Apple card image */
+  .apple-card img {
+    border-radius: 16px;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Apple card heading */
+  .apple-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+  }
+
+  /* Apple card text */
+  .apple-card p {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.5;
+  }
+
+  /* Apple card button */
+  .apple-card a {
+    display: block;
+    margin-top: 0.9rem;
+    text-align: center;
+    background: #2563eb;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
+/* =====================================================
+   APPLE-STYLE CARD (LIGHT + DARK)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  body {
+    background: var(--bg-page);
+    color: var(--text-main);
+  }
+
+  .apple-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 1.25rem;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .apple-card img {
+    border-radius: 16px;
+    margin-bottom: 0.75rem;
+  }
+
+  .apple-card h3 {
+    color: var(--text-main);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .apple-card p {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+  }
+
+  .apple-card a {
+    display: block;
+    margin-top: 0.9rem;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    border-radius: 14px;
+    background: #2563eb;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
+
+
+/* =====================================================
+   APPLE STYLE THEME TOKENS
+   ===================================================== */
+
+/* LIGHT MODE (DEFAULT) */
+:root {
+  --bg-page: #f9fafb;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-soft: #475569;
+  --border-soft: rgba(15, 23, 42, 0.06);
+  --shadow-soft:
+    0 6px 16px rgba(15, 23, 42, 0.06),
+    0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* AUTOMATIC DARK MODE (SYSTEM) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page: #0b0f1a;
+    --bg-card: #111827;
+    --text-main: #e5e7eb;
+    --text-soft: #9ca3af;
+    --border-soft: rgba(255, 255, 255, 0.08);
+    --shadow-soft:
+      0 8px 22px rgba(0, 0, 0, 0.6),
+      0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* MANUAL DARK MODE OVERRIDE */
+.dark {
+  --bg-page: #0b0f1a;
+  --bg-card: #111827;
+  --text-main: #e5e7eb;
+  --text-soft: #9ca3af;
+  --border-soft: rgba(255,255,255,0.08);
+  --shadow-soft:
+    0 8px 22px rgba(0,0,0,0.6),
+    0 2px 4px rgba(0,0,0,0.4);
+}
+
+
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -155,7 +461,10 @@
             <a href="index.html" class="flex items-center space-x-3">
                 <!-- Image Logo for Codechype -->
                 <img src="codechypelogo.png" alt="Codechype Logo" class="h-10 w-10 rounded-full object-cover">
-                <span class="text-2xl font-bold text-white hidden sm:inline">Codechype</span>
+                <span class="text-lg sm:text-2xl font-bold text-white tracking-wide">Codechype</span>
+                <button id="themeToggle"
+  class="text-sm px-3 py-1 rounded-lg border border-gray-300 dark:border-gray-600">🌙</button>
+ 
             </a>
             <nav class="hidden md:flex space-x-8">
                 <a href="index.html" class="hover:text-blue-400 transition-colors duration-300">Home</a>
@@ -839,7 +1148,22 @@
         closeMobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
         });
-    </script>
+        
+        const toggle = document.getElementById("themeToggle");
+        const root = document.documentElement;
+
+       // Load saved preference
+       if (localStorage.theme === "dark") {
+       root.classList.add("dark");
+      }
+
+  toggle.addEventListener("click", () => {
+    root.classList.toggle("dark");
+    localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+  });
+</script>
+
+    
     <!-- WhatsApp Floating Button -->
 <a href="https://wa.me/918434457228?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20your%20courses."
    class="whatsapp-float"
@@ -853,5 +1177,4 @@
 
 </body>
 </html>
-
 
