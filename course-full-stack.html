@@ -65,13 +65,28 @@ section{position:relative;z-index:10}
 <!-- Header -->
 <header class="sticky top-0 bg-slate-950/80 backdrop-blur border-b border-slate-800 z-40">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a class="text-2xl font-extrabold">Codechype</a>
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="codechypelogo.png" alt="Codechype Logo" class="h-9 w-9 rounded-full object-cover ring-2 ring-slate-800" />
+      <span class="text-lg font-bold tracking-tight">Codechype</span>
+    </a>
     <nav class="hidden md:flex gap-8 text-sm">
       <a href="index.html">Home</a>
       <a href="courses.html" class="text-cyan-400">Courses</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <a href="contact.html" class="btn hidden md:inline-flex">Talk to Mentor</a>
+    <a href="contact.html" class="btn hidden md:inline-flex items-center gap-2">Talk to Mentor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-slate-900/60 text-slate-200 hover:bg-slate-800/70">
+      <i data-lucide="menu" class="w-5 h-5" id="menu-icon"></i>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 w-full h-dvh bg-slate-950/95 backdrop-blur flex flex-col items-center justify-center space-y-8 text-xl z-50">
+    <button id="mobile-menu-close" class="absolute top-6 right-6" aria-label="Close menu">
+      <i data-lucide="x" class="w-8 h-8 text-white"></i>
+    </button>
+    <a href="index.html" class="text-cyan-300 font-semibold">Home</a>
+    <a href="courses.html" class="text-white hover:text-cyan-300 transition-colors">Courses</a>
+    <a href="contact.html" class="text-white hover:text-cyan-300 transition-colors">Contact</a>
+    <a href="contact.html" class="btn inline-flex items-center gap-2"><span>Enroll Now</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
   </div>
 </header>
 
@@ -79,7 +94,7 @@ section{position:relative;z-index:10}
 
 <!-- HERO -->
 <section class="py-24 text-center">
-  <h1 class="text-4xl md:text-6xl font-extrabold mb-6">
+  <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-6">
     Full-Stack Web Development
   </h1>
   <p class="max-w-3xl mx-auto text-slate-300 mb-8 text-lg">
@@ -88,7 +103,7 @@ section{position:relative;z-index:10}
 
   <div class="max-w-2xl mx-auto mb-8">
     <h2 class="text-xl font-semibold text-cyan-300 mb-4">Complete Tech Stack You'll Master</h2>
-    <div class="grid md:grid-cols-3 gap-4 text-sm">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
       <div class="bg-slate-800/40 p-3 rounded-lg">
         <div class="text-cyan-300 font-medium mb-1">Frontend</div>
         <div class="text-slate-400">React, JavaScript, HTML/CSS</div>
@@ -124,7 +139,7 @@ section{position:relative;z-index:10}
     Our comprehensive curriculum covers everything you need to become a professional full-stack developer, from fundamentals to advanced production techniques.
   </p>
 
-  <div class="grid md:grid-cols-3 gap-8">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
     <div class="card p-8">
       <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
         <i data-lucide="monitor" class="w-6 h-6 text-cyan-300"></i>
@@ -173,7 +188,7 @@ section{position:relative;z-index:10}
     </p>
 
     <h3 class="text-xl font-semibold mb-4 text-cyan-300">What You'll Master</h3>
-    <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="grid sm:grid-cols-2 gap-4 mb-6">
       <div>
         <h4 class="font-medium text-white mb-2">Frontend Development</h4>
         <ul class="text-sm text-slate-300 space-y-1">
@@ -215,7 +230,7 @@ section{position:relative;z-index:10}
     </div>
 
     <h3 class="text-xl font-semibold mb-4 text-cyan-300">Industry Skills & Tools</h3>
-    <div class="grid md:grid-cols-2 gap-4 mb-6">
+    <div class="grid sm:grid-cols-2 gap-4 mb-6">
       <div>
         <h4 class="font-medium text-white mb-2">Development Tools</h4>
         <ul class="text-sm text-slate-300 space-y-1">
@@ -284,7 +299,7 @@ section{position:relative;z-index:10}
 <!-- CURRICULUM -->
 <section id="curriculum" class="max-w-7xl mx-auto px-6 py-20">
   <h2 class="text-3xl font-bold text-center mb-12">Curriculum Roadmap</h2>
-  <div class="grid md:grid-cols-4 gap-6">
+  <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
     <div class="card p-6">
       <h3 class="text-xl font-semibold mb-4 text-cyan-300">Frontend Fundamentals</h3>
       <ul class="space-y-2 text-sm text-slate-300 mb-4">
@@ -339,7 +354,7 @@ section{position:relative;z-index:10}
     Each project is designed to teach real-world skills and build your portfolio. You'll deploy all projects live and add them to your resume.
   </p>
 
-  <div class="grid md:grid-cols-3 gap-8">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
     <div class="card p-6">
       <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
         <i data-lucide="shopping-cart" class="w-6 h-6 text-blue-300"></i>
@@ -392,7 +407,7 @@ section{position:relative;z-index:10}
     Our graduates don't just learn to code — they launch successful careers in tech. Here's what you can expect after completing the program.
   </p>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
     <div class="text-center">
       <div class="text-3xl font-bold text-cyan-300 mb-2">92%</div>
       <p class="text-slate-300">Job placement rate within 3 months</p>
@@ -445,16 +460,57 @@ section{position:relative;z-index:10}
 
 </main>
 
+<!-- Footer -->
+<footer class="border-t border-slate-800 bg-slate-950/60">
+  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <a href="index.html" class="inline-flex items-center gap-3">
+      <img src="codechypelogo.png" alt="Codechype Logo" class="h-9 w-9 rounded-full object-cover ring-2 ring-slate-800" />
+      <span class="text-base font-semibold tracking-tight">Codechype</span>
+    </a>
+    <p class="text-center text-sm text-slate-400">© <span id="year">2025</span> Codechype — All Rights Reserved</p>
+  </div>
+</footer>
+
 <!-- WhatsApp -->
 <a href="https://wa.me/918434457228?text=Hi%2C%20I%20want%20to%20know%20about%20the%20Full-Stack%20Web%20Development%20course."
-class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition">
-  <i data-lucide="message-circle" class="w-7 h-7"></i>
+   aria-label="Chat on WhatsApp" title="Chat on WhatsApp"
+   class="fixed z-50 bottom-6 right-6 sm:bottom-6 sm:right-6 bg-green-500 hover:bg-green-600 active:bg-green-700 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg shadow-green-900/30 border border-white/10 flex items-center justify-center text-white">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" aria-hidden="true">
+    <path d="M19.11 17.62c-.26-.13-1.53-.75-1.77-.83-.24-.09-.42-.13-.6.13-.18.26-.69.83-.85 1.01-.16.18-.31.2-.57.07-.26-.13-1.11-.41-2.11-1.31-.78-.69-1.31-1.53-1.46-1.79-.15-.26-.02-.4.11-.53.12-.12.26-.31.39-.46.13-.15.17-.26.26-.44.09-.18.04-.33-.02-.46-.06-.13-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.46-.16 0-.33-.02-.51-.02-.18 0-.46.07-.7.33-.24.26-.92.9-.92 2.2 0 1.3.94 2.55 1.07 2.73.13.18 1.85 2.82 4.49 3.96.63.27 1.12.43 1.5.55.63.2 1.2.17 1.65.1.5-.08 1.53-.62 1.74-1.23.22-.61.22-1.13.15-1.23-.06-.1-.24-.16-.5-.29z"/>
+    <path d="M16.02 3.2C9.29 3.2 3.86 8.62 3.86 15.36c0 2.68.87 5.16 2.34 7.18L4.2 28.8l6.49-1.99c1.92 1.05 4.13 1.65 6.47 1.65 6.73 0 12.16-5.42 12.16-12.16S22.75 3.2 16.02 3.2zm0 22.14c-2.24 0-4.31-.73-5.98-1.97l-.43-.3-3.85 1.18 1.2-3.75-.31-.45a9.78 9.78 0 01-1.75-5.5c0-5.43 4.42-9.85 9.85-9.85s9.85 4.42 9.85 9.85-4.42 9.85-9.85 9.85z"/>
+  </svg>
 </a>
 
 <script>
 lucide.createIcons();
+// Mobile menu toggle
+const menuBtn = document.getElementById('mobile-menu-btn');
+const menuOverlay = document.getElementById('mobile-menu');
+const menuClose = document.getElementById('mobile-menu-close');
+const menuIcon = document.getElementById('menu-icon');
+function openMenu(){
+  menuOverlay.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+  if(menuBtn) menuBtn.setAttribute('aria-expanded','true');
+  if(menuIcon){ menuIcon.setAttribute('data-lucide','x'); lucide.createIcons(); }
+}
+function closeMenu(){
+  menuOverlay.classList.add('hidden');
+  document.body.classList.remove('overflow-hidden');
+  if(menuBtn) menuBtn.setAttribute('aria-expanded','false');
+  if(menuIcon){ menuIcon.setAttribute('data-lucide','menu'); lucide.createIcons(); }
+}
+if(menuBtn && menuOverlay && menuClose){
+  menuBtn.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuOverlay.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+}
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.from("section",{opacity:0,y:40,stagger:.15,duration:.7,scrollTrigger:{trigger:"section",start:"top 85%"}});
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>

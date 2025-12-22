@@ -97,8 +97,8 @@
 <header class="bg-slate-950/70 backdrop-blur border-b border-slate-800 sticky top-0 z-40">
   <div class="container mx-auto px-6 py-4 flex justify-between items-center">
     <a href="index.html" class="flex items-center gap-3">
-      <img src="codechypelogo.png" class="h-10 w-10 rounded-full">
-      <span class="hidden sm:inline text-2xl font-extrabold">Codechype</span>
+      <img src="codechypelogo.png" alt="Codechype Logo" class="h-9 w-9 rounded-full object-cover ring-2 ring-slate-800" />
+      <span class="text-lg font-bold tracking-tight">Codechype</span>
     </a>
     <nav class="hidden md:flex gap-7 text-sm font-medium">
       <a href="index.html" class="hover:text-cyan-300">Home</a>
@@ -106,7 +106,20 @@
       <a href="about.html" class="hover:text-cyan-300">About</a>
       <a href="contact.html" class="hover:text-cyan-300">Contact</a>
     </nav>
-    <a href="contact.html" class="btn-liquid hidden md:inline-flex">Talk to Mentor</a>
+    <a href="contact.html" class="btn-liquid hidden md:inline-flex items-center gap-2">Talk to Mentor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-slate-900/60 text-slate-200 hover:bg-slate-800/70">
+      <i data-lucide="menu" class="w-5 h-5" id="menu-icon"></i>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 w-full h-dvh bg-slate-950/95 backdrop-blur flex flex-col items-center justify-center space-y-8 text-xl z-50">
+    <button id="mobile-menu-close" class="absolute top-6 right-6" aria-label="Close menu">
+      <i data-lucide="x" class="w-8 h-8 text-white"></i>
+    </button>
+    <a href="index.html" class="text-cyan-300 font-semibold">Home</a>
+    <a href="courses.html" class="text-white hover:text-cyan-300 transition-colors">Courses</a>
+    <a href="about.html" class="text-white hover:text-cyan-300 transition-colors">About</a>
+    <a href="contact.html" class="text-white hover:text-cyan-300 transition-colors">Contact</a>
+    <a href="contact.html" class="btn-liquid inline-flex items-center gap-2"><span>Enroll Now</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
   </div>
 </header>
 
@@ -114,7 +127,7 @@
 
 <!-- HERO -->
 <section class="pt-20 pb-24 text-center px-6">
-  <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 bg-gradient-to-r from-blue-200 via-white to-purple-200 bg-clip-text text-transparent">
+  <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-5 bg-gradient-to-r from-blue-200 via-white to-purple-200 bg-clip-text text-transparent">
     Data Analytics with Python & SQL
   </h1>
   <p class="max-w-3xl mx-auto text-lg text-slate-300 mb-6">
@@ -123,7 +136,7 @@
 
   <div class="max-w-2xl mx-auto mb-8">
     <h2 class="text-xl font-semibold text-cyan-300 mb-4">What You'll Learn</h2>
-    <div class="grid md:grid-cols-3 gap-4 text-sm">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
       <div class="bg-slate-800/40 p-3 rounded-lg">
         <div class="text-cyan-300 font-medium mb-1">Data Cleaning</div>
         <div class="text-slate-400">Handle missing data, outliers & inconsistencies</div>
@@ -159,7 +172,7 @@
       Our comprehensive curriculum covers everything you need to become a professional data analyst, from fundamentals to advanced techniques.
     </p>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
 
       <div class="magnetic-card">
         <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
@@ -212,7 +225,7 @@
       Apply your skills to real-world scenarios. Each project builds upon the previous one, giving you hands-on experience with the complete data analytics workflow.
     </p>
 
-    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto">
 
       <div class="magnetic-card">
         <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
@@ -266,7 +279,7 @@
       Our structured 8-10 week program takes you from complete beginner to job-ready data analyst through hands-on learning and real projects.
     </p>
 
-    <div class="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
       <div class="text-center">
         <div class="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
           <span class="text-2xl font-bold text-cyan-300">1</span>
@@ -307,7 +320,7 @@
       Join thousands of successful graduates working as data analysts at top companies worldwide.
     </p>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
       <div class="text-center">
         <div class="text-3xl font-bold text-cyan-300 mb-2">85%</div>
         <p class="text-slate-300">Job placement rate within 3 months</p>
@@ -409,6 +422,28 @@
 
 <script>
   lucide.createIcons();
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const menuOverlay = document.getElementById('mobile-menu');
+  const menuClose = document.getElementById('mobile-menu-close');
+  const menuIcon = document.getElementById('menu-icon');
+  function openMenu(){
+    menuOverlay.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    if(menuBtn) menuBtn.setAttribute('aria-expanded','true');
+    if(menuIcon){ menuIcon.setAttribute('data-lucide','x'); lucide.createIcons(); }
+  }
+  function closeMenu(){
+    menuOverlay.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+    if(menuBtn) menuBtn.setAttribute('aria-expanded','false');
+    if(menuIcon){ menuIcon.setAttribute('data-lucide','menu'); lucide.createIcons(); }
+  }
+  if(menuBtn && menuOverlay && menuClose){
+    menuBtn.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+  }
 
   const backToTop = document.getElementById("backToTop");
   window.addEventListener("scroll", () => {
@@ -436,4 +471,3 @@
 
 </body>
 </html>
-

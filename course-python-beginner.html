@@ -1,276 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Python Programming Kickstart – Codechype</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Programming Kickstart – Codechype</title>
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
 
-      /* Logo shine animation */
-      .logo-glow {
-        position: relative;
-        overflow: hidden;
-      }
-      .logo-glow::after {
-        content: "";
-        position: absolute;
-        top: -100%;
-        left: -150%;
-        width: 200%;
-        height: 300%;
-        background: linear-gradient(
-          120deg,
+    /* Logo shine animation */
+    .logo-glow {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-glow::after {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: -150%;
+      width: 200%;
+      height: 300%;
+      background: linear-gradient(120deg,
           rgba(255, 255, 255, 0) 0%,
           rgba(255, 255, 255, 0.2) 40%,
-          rgba(255, 255, 255, 0) 80%
-        );
-        transform: rotate(15deg);
-        animation: logo-shine 4s linear infinite;
-      }
-      @keyframes logo-shine {
-        0% {
-          transform: translateX(-100%) rotate(15deg);
-        }
-        60% {
-          transform: translateX(120%) rotate(15deg);
-        }
-        100% {
-          transform: translateX(120%) rotate(15deg);
-        }
+          rgba(255, 255, 255, 0) 80%);
+      transform: rotate(15deg);
+      animation: logo-shine 4s linear infinite;
+    }
+
+    @keyframes logo-shine {
+      0% {
+        transform: translateX(-100%) rotate(15deg);
       }
 
-      /* Typing effect */
-      .typing-text {
-        border-right: 3px solid rgba(255, 255, 255, 0.8);
-        white-space: nowrap;
-        overflow: hidden;
-        width: 0;
-        margin-left: auto;
-        margin-right: auto;
-        animation: typing 4s steps(40, end) forwards,
-          caret-blink 0.7s step-end infinite;
-      }
-      @keyframes typing {
-        to {
-          width: 100%;
-        }
-      }
-      @keyframes caret-blink {
-        50% {
-          border-color: transparent;
-        }
+      60% {
+        transform: translateX(120%) rotate(15deg);
       }
 
-      /* Liquid hover buttons */
-      .btn-liquid {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.75rem 1.8rem;
-        border-radius: 999px;
-        background: radial-gradient(circle at 0 0, #22d3ee, transparent 55%),
-          radial-gradient(circle at 100% 0, #4f46e5, transparent 55%),
-          radial-gradient(circle at 0 100%, #22c55e, transparent 55%),
-          radial-gradient(circle at 100% 100%, #3b82f6, transparent 55%);
-        background-size: 150% 150%;
-        color: white;
-        font-weight: 700;
-        overflow: hidden;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      100% {
+        transform: translateX(120%) rotate(15deg);
       }
-      .btn-liquid span {
-        position: relative;
-        z-index: 10;
-      }
-      .btn-liquid::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.3), transparent 55%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .btn-liquid:hover {
-        transform: translateY(-1px) scale(1.02);
-        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.55);
-        animation: btn-flow 4s ease infinite;
-      }
-      .btn-liquid:hover::before {
-        opacity: 1;
-      }
-      @keyframes btn-flow {
-        0% {
-          background-position: 0% 0%;
-        }
-        50% {
-          background-position: 100% 100%;
-        }
-        100% {
-          background-position: 0% 0%;
-        }
-      }
+    }
 
-      /* Magnetic card effect base */
-      .magnetic-card {
-        transition: box-shadow 0.35s ease, border-color 0.3s ease, transform 0.35s ease, background-color 0.35s ease;
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
-        border: 1.5px solid rgba(59, 130, 246, 0.4) !important;
-        position: relative;
-        overflow: hidden;
-      }
-      .magnetic-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
+    /* Typing effect */
+    .typing-text {
+      border-right: 3px solid rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      margin-left: auto;
+      margin-right: auto;
+      animation: typing 4s steps(40, end) forwards,
+        caret-blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      to {
         width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-        transition: left 0.5s ease;
       }
-      .magnetic-card:hover::before {
-        left: 100%;
+    }
+
+    @keyframes caret-blink {
+      50% {
+        border-color: transparent;
       }
-      .magnetic-card:hover {
-        box-shadow: 0 24px 50px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        border-color: rgba(59, 130, 246, 0.8) !important;
-        transform: translateY(-8px);
-      }
-      .magnetic-card > * {
-        position: relative;
-        z-index: 1;
+    }
+
+    /* Liquid hover buttons */
+    .btn-liquid {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.8rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, #22d3ee, transparent 55%),
+        radial-gradient(circle at 100% 0, #4f46e5, transparent 55%),
+        radial-gradient(circle at 0 100%, #22c55e, transparent 55%),
+        radial-gradient(circle at 100% 100%, #3b82f6, transparent 55%);
+      background-size: 150% 150%;
+      color: white;
+      font-weight: 700;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-liquid span {
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn-liquid::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.3), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-liquid:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.55);
+      animation: btn-flow 4s ease infinite;
+    }
+
+    .btn-liquid:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes btn-flow {
+      0% {
+        background-position: 0% 0%;
       }
 
-      /* Floating blobs background */
-      .blob-container {
-        pointer-events: none;
-      }
-      @keyframes blob {
-        0% {
-          transform: translate(0px, 0px) scale(1);
-        }
-        33% {
-          transform: translate(35px, -45px) scale(1.08);
-        }
-        66% {
-          transform: translate(-25px, 25px) scale(0.96);
-        }
-        100% {
-          transform: translate(0px, 0px) scale(1);
-        }
-      }
-      .animate-blob {
-        animation: blob 9s ease-in-out infinite;
-      }
-      .animation-delay-2000 {
-        animation-delay: 2s;
-      }
-      .animation-delay-4000 {
-        animation-delay: 4s;
+      50% {
+        background-position: 100% 100%;
       }
 
-      /* Back to top button */
-      #backToTop {
-        transition: opacity 0.3s ease, transform 0.3s ease;
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    /* Magnetic card effect base */
+    .magnetic-card {
+      transition: box-shadow 0.35s ease, border-color 0.3s ease, transform 0.35s ease, background-color 0.35s ease;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+      border: 1.5px solid rgba(59, 130, 246, 0.4) !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .magnetic-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .magnetic-card:hover::before {
+      left: 100%;
+    }
+
+    .magnetic-card:hover {
+      box-shadow: 0 24px 50px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border-color: rgba(59, 130, 246, 0.8) !important;
+      transform: translateY(-8px);
+    }
+
+    .magnetic-card>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Floating blobs background */
+    .blob-container {
+      pointer-events: none;
+    }
+
+    @keyframes blob {
+      0% {
+        transform: translate(0px, 0px) scale(1);
       }
 
-      /* Fade testimonial slides */
-      .testimonial-slide {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
+      33% {
+        transform: translate(35px, -45px) scale(1.08);
       }
-      .testimonial-active {
-        opacity: 1;
+
+      66% {
+        transform: translate(-25px, 25px) scale(0.96);
+      }
+
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+    }
+
+    .animate-blob {
+      animation: blob 9s ease-in-out infinite;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    /* Back to top button */
+    #backToTop {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Fade testimonial slides */
+    .testimonial-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .testimonial-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- WhatsApp button styles (same as index) -->
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: float-bounce 3s ease-in-out infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+
+    @keyframes float-bounce {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
-    </style>
 
-    <!-- WhatsApp button styles (same as index) -->
-    <style>
-      .whatsapp-float {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        background-color: #25d366;
-        color: white;
-        border-radius: 50%;
-        width: 55px;
-        height: 55px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        animation: float-bounce 3s ease-in-out infinite;
+      50% {
+        transform: translateY(-5px);
       }
-      .whatsapp-float:hover {
-        transform: scale(1.1);
-        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
-      }
-      .whatsapp-float svg {
-        width: 30px;
-        height: 30px;
-        fill: white;
-      }
-      @keyframes float-bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
-      }
-    </style>
+    }
+  </style>
 </head>
 
 <body class="bg-slate-950 text-slate-100 overflow-x-hidden">
 
   <!-- Floating Blobs Background -->
-  <div class="fixed inset-0 -z-10 overflow-hidden blob-container">
-    <div class="absolute -top-10 -left-10 w-80 h-80 bg-cyan-500/30 rounded-full mix-blend-screen blur-3xl animate-blob"></div>
-    <div class="absolute top-40 -right-10 w-96 h-96 bg-indigo-500/30 rounded-full mix-blend-screen blur-3xl animate-blob animation-delay-2000"></div>
-    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/25 rounded-full mix-blend-screen blur-3xl animate-blob animation-delay-4000"></div>
+  <div class="fixed inset-0 -z-10 overflow-hidden blob-container hidden md:block">
+    <div class="absolute -top-10 -left-10 w-80 h-80 bg-cyan-500/30 rounded-full mix-blend-screen blur-3xl animate-blob">
+    </div>
+    <div
+      class="absolute top-40 -right-10 w-96 h-96 bg-indigo-500/30 rounded-full mix-blend-screen blur-3xl animate-blob animation-delay-2000">
+    </div>
+    <div
+      class="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/25 rounded-full mix-blend-screen blur-3xl animate-blob animation-delay-4000">
+    </div>
   </div>
 
   <!-- Header -->
-  <header class="bg-slate-950/80 backdrop-blur border-b border-slate-800 text-white sticky top-0 z-40">
+  <header class="bg-slate-950 backdrop-blur border-b border-slate-800 text-white sticky top-0 z-40">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="flex items-center space-x-3">
-        <div class="h-10 w-10 rounded-full overflow-hidden logo-glow">
-          <img src="codechypelogo.png" alt="Codechype Logo" class="h-10 w-10 object-cover" />
-        </div>
-        <span class="text-2xl font-extrabold tracking-tight hidden sm:inline">
-          Codechype
-        </span>
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="codechypelogo.png" alt="Codechype Logo" class="h-9 w-9 rounded-full object-cover ring-2 ring-slate-800" />
+        <span class="text-lg font-bold tracking-tight">Codechype</span>
       </a>
       <nav class="hidden md:flex space-x-8 text-sm font-medium">
         <a href="index.html" class="text-slate-300 hover:text-cyan-300 transition-colors">Home</a>
@@ -278,22 +305,17 @@
         <a href="about.html" class="text-slate-300 hover:text-cyan-300 transition-colors">About Us</a>
         <a href="contact.html" class="text-slate-300 hover:text-cyan-300 transition-colors">Contact</a>
       </nav>
-      <a
-        href="contact.html"
-        class="hidden md:inline-flex btn-liquid text-sm"
-      >
+      <a href="contact.html" class="hidden md:inline-flex btn-liquid text-sm">
         <span>Talk to Mentor</span>
       </a>
-      <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-        <i data-lucide="menu" class="w-6 h-6"></i>
+      <button id="mobile-menu-button" aria-label="Open menu" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 bg-slate-900/60 text-slate-200 hover:bg-slate-800/70 focus:outline-none">
+        <i data-lucide="menu" class="w-5 h-5" id="menu-icon"></i>
       </button>
     </div>
 
     <!-- Mobile Menu -->
-    <div
-      id="mobile-menu"
-      class="hidden md:hidden fixed inset-0 bg-slate-950/95 backdrop-blur flex flex-col items-center justify-center space-y-8 text-xl z-30"
-    >
+    <div id="mobile-menu"
+      class="hidden md:hidden fixed inset-0 w-full h-dvh bg-slate-950/95 backdrop-blur flex flex-col items-center justify-center space-y-8 text-xl z-50">
       <button id="close-mobile-menu" class="absolute top-6 right-6 focus:outline-none">
         <i data-lucide="x" class="w-8 h-8 text-white"></i>
       </button>
@@ -301,10 +323,7 @@
       <a href="courses.html" class="text-white hover:text-cyan-300 transition-colors">Courses</a>
       <a href="about.html" class="text-white hover:text-cyan-300 transition-colors">About Us</a>
       <a href="contact.html" class="text-white hover:text-cyan-300 transition-colors">Contact</a>
-      <a
-        href="contact.html"
-        class="btn-liquid text-base"
-      >
+      <a href="contact.html" class="btn-liquid text-base">
         <span>Enroll Now</span>
       </a>
     </div>
@@ -316,8 +335,8 @@
     <section class="relative overflow-hidden">
       <!-- gradient wave under hero -->
       <div
-        class="absolute inset-x-0 top-32 h-64 bg-gradient-to-r from-cyan-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl"
-      ></div>
+        class="absolute inset-x-0 top-32 h-64 bg-gradient-to-r from-cyan-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl">
+      </div>
 
       <div class="container mx-auto px-6 pt-16 pb-20 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
@@ -328,16 +347,13 @@
           </p>
 
           <h1
-            class="hero-heading text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight bg-gradient-to-r from-white via-cyan-100 to-indigo-200 bg-clip-text text-transparent mb-4"
-          >
+            class="hero-heading text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight bg-gradient-to-r from-white via-cyan-100 to-indigo-200 bg-clip-text text-transparent mb-4">
             Python Programming Kickstart
           </h1>
 
-          <p
-            id="typing-line"
-            class="typing-text text-base md:text-lg text-slate-200/90 max-w-3xl mb-6"
-          >
-            Master Python from absolute zero to building real applications. Join thousands who started with no coding experience and now work as developers, data analysts, and AI engineers.
+          <p id="typing-line" class="typing-text text-base md:text-lg text-slate-200/90 max-w-3xl mb-6">
+            Master Python from absolute zero to building real applications. Join thousands who started with no coding
+            experience and now work as developers, data analysts, and AI engineers.
           </p>
 
           <div class="max-w-2xl mx-auto mb-8">
@@ -363,10 +379,8 @@
               <span>Enroll for the Next Batch</span>
             </a>
 
-            <a
-              href="#curriculum"
-              class="inline-flex items-center gap-2 text-sm text-slate-200 hover:text-cyan-300 transition-colors"
-            >
+            <a href="#curriculum"
+              class="inline-flex items-center gap-2 text-sm text-slate-200 hover:text-cyan-300 transition-colors">
               <span>View detailed curriculum</span>
               <i data-lucide="arrow-down" class="w-4 h-4"></i>
             </a>
@@ -399,21 +413,20 @@
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-6">Why Choose Our Python Course?</h2>
         <p class="text-center text-slate-300 mb-12 max-w-2xl mx-auto">
-          Our beginner-focused curriculum has helped thousands start their programming journey. Here's what makes our approach unique and effective.
+          Our beginner-focused curriculum has helped thousands start their programming journey. Here's what makes our
+          approach unique and effective.
         </p>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div
-            class="magnetic-card bg-slate-900/70 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm"
-          >
+          <div class="magnetic-card bg-slate-900/70 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm">
             <div
-              class="h-10 w-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-cyan-400 to-indigo-500 mb-4"
-            >
+              class="h-10 w-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-cyan-400 to-indigo-500 mb-4">
               <i data-lucide="target" class="w-5 h-5 text-white"></i>
             </div>
             <h3 class="text-lg font-semibold mb-3">Start from Zero</h3>
             <p class="text-slate-300 mb-4">
-              No coding background? We start with the absolute basics: logic, mindset, and how to think like a programmer. Our step-by-step approach ensures you never feel lost.
+              No coding background? We start with the absolute basics: logic, mindset, and how to think like a
+              programmer. Our step-by-step approach ensures you never feel lost.
             </p>
             <ul class="text-sm space-y-1 text-slate-400">
               <li>• Programming fundamentals</li>
@@ -422,17 +435,15 @@
             </ul>
           </div>
 
-          <div
-            class="magnetic-card bg-slate-900/70 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm"
-          >
+          <div class="magnetic-card bg-slate-900/70 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm">
             <div
-              class="h-10 w-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-emerald-400 to-cyan-500 mb-4"
-            >
+              class="h-10 w-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-emerald-400 to-cyan-500 mb-4">
               <i data-lucide="code" class="w-5 h-5 text-white"></i>
             </div>
             <h3 class="text-lg font-semibold mb-3">Write Real Python</h3>
             <p class="text-slate-300 mb-4">
-              Build command-line tools, mini apps, file automations and problem-solving scripts used in real work. Learn Python patterns that employers actually look for.
+              Build command-line tools, mini apps, file automations and problem-solving scripts used in real work. Learn
+              Python patterns that employers actually look for.
             </p>
             <ul class="text-sm space-y-1 text-slate-400">
               <li>• Industry-standard practices</li>
@@ -441,17 +452,15 @@
             </ul>
           </div>
 
-          <div
-            class="magnetic-card bg-slate-900/70 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm"
-          >
+          <div class="magnetic-card bg-slate-900/70 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm">
             <div
-              class="h-10 w-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-purple-500 to-indigo-500 mb-4"
-            >
+              class="h-10 w-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-purple-500 to-indigo-500 mb-4">
               <i data-lucide="briefcase" class="w-5 h-5 text-white"></i>
             </div>
             <h3 class="text-lg font-semibold mb-3">Portfolio + Roadmap</h3>
             <p class="text-slate-300 mb-4">
-              Finish with deployable projects, GitHub profile guidance, and a clear path towards Data, AI or Web roles. Get personalized career advice for your next steps.
+              Finish with deployable projects, GitHub profile guidance, and a clear path towards Data, AI or Web roles.
+              Get personalized career advice for your next steps.
             </p>
             <ul class="text-sm space-y-1 text-slate-400">
               <li>• Professional portfolio</li>
@@ -486,7 +495,7 @@
 
     <!-- COURSE OVERVIEW + SIDEBAR -->
     <section class="relative py-10 sm:py-16">
-      <div class="container mx-auto px-6 grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-10">
+      <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-10">
         <!-- Left: Description -->
         <div class="space-y-8">
           <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 md:p-8 backdrop-blur">
@@ -549,7 +558,8 @@
                 </div>
                 <div>
                   <h4 class="font-medium text-slate-100 mb-1">No Prior Experience Required</h4>
-                  <p class="text-sm text-slate-400">This course starts from absolute basics. If you've never written a line of code, you're in the right place.</p>
+                  <p class="text-sm text-slate-400">This course starts from absolute basics. If you've never written a
+                    line of code, you're in the right place.</p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
@@ -558,7 +568,8 @@
                 </div>
                 <div>
                   <h4 class="font-medium text-slate-100 mb-1">Computer with Internet</h4>
-                  <p class="text-sm text-slate-400">A computer (Windows/Mac/Linux) with stable internet connection. We'll help you install Python and VS Code.</p>
+                  <p class="text-sm text-slate-400">A computer (Windows/Mac/Linux) with stable internet connection.
+                    We'll help you install Python and VS Code.</p>
                 </div>
               </div>
               <div class="flex items-start gap-3">
@@ -567,7 +578,8 @@
                 </div>
                 <div>
                   <h4 class="font-medium text-slate-100 mb-1">6-8 Hours per Week</h4>
-                  <p class="text-sm text-slate-400">Flexible schedule with recorded lessons and live doubt-clearing sessions. Learn at your own pace.</p>
+                  <p class="text-sm text-slate-400">Flexible schedule with recorded lessons and live doubt-clearing
+                    sessions. Learn at your own pace.</p>
                 </div>
               </div>
             </div>
@@ -584,7 +596,8 @@
                   </div>
                   <div>
                     <h4 class="font-medium text-slate-100 mb-1">Structured Curriculum</h4>
-                    <p class="text-sm text-slate-400">Carefully sequenced topics that build upon each other, ensuring no knowledge gaps.</p>
+                    <p class="text-sm text-slate-400">Carefully sequenced topics that build upon each other, ensuring no
+                      knowledge gaps.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -593,7 +606,8 @@
                   </div>
                   <div>
                     <h4 class="font-medium text-slate-100 mb-1">Project-Based Learning</h4>
-                    <p class="text-sm text-slate-400">Apply concepts immediately through hands-on projects and real-world scenarios.</p>
+                    <p class="text-sm text-slate-400">Apply concepts immediately through hands-on projects and
+                      real-world scenarios.</p>
                   </div>
                 </div>
               </div>
@@ -604,7 +618,8 @@
                   </div>
                   <div>
                     <h4 class="font-medium text-slate-100 mb-1">1:1 Mentorship</h4>
-                    <p class="text-sm text-slate-400">Weekly personal guidance from experienced developers to keep you on track.</p>
+                    <p class="text-sm text-slate-400">Weekly personal guidance from experienced developers to keep you
+                      on track.</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
@@ -613,7 +628,8 @@
                   </div>
                   <div>
                     <h4 class="font-medium text-slate-100 mb-1">Job-Ready Focus</h4>
-                    <p class="text-sm text-slate-400">Industry-relevant skills with interview preparation and portfolio development.</p>
+                    <p class="text-sm text-slate-400">Industry-relevant skills with interview preparation and portfolio
+                      development.</p>
                   </div>
                 </div>
               </div>
@@ -670,8 +686,7 @@
 
         <!-- Right: Overview Card -->
         <aside
-          class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 md:p-8 h-fit backdrop-blur-lg lg:sticky lg:top-24"
-        >
+          class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 md:p-8 h-fit backdrop-blur-lg lg:sticky lg:top-24">
           <h3 class="text-xl font-semibold mb-4">Program Snapshot</h3>
           <ul class="space-y-3 text-sm text-slate-200">
             <li class="flex items-center justify-between">
@@ -724,13 +739,17 @@
     </section>
 
     <!-- CURRICULUM ROADMAP -->
-    <section id="curriculum" class="relative py-20 border-y border-slate-700/40 bg-gradient-to-b from-slate-900/60 to-slate-950/80">
+    <section id="curriculum"
+      class="relative py-20 border-y border-slate-700/40 bg-gradient-to-b from-slate-900/60 to-slate-950/80">
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Curriculum Roadmap</h2>
+            <h2
+              class="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Curriculum Roadmap</h2>
             <p class="text-sm md:text-base text-slate-300 max-w-xl">
-              Progress week-by-week through carefully layered concepts so that you never feel lost or rushed. Each week builds directly on the previous one.
+              Progress week-by-week through carefully layered concepts so that you never feel lost or rushed. Each week
+              builds directly on the previous one.
             </p>
           </div>
           <div class="text-right">
@@ -748,7 +767,8 @@
               </div>
               <div class="flex-1">
                 <h3 class="text-xl font-semibold mb-2">Programming Mindset & Python Basics</h3>
-                <p class="text-slate-300 mb-4">Start your journey with a solid foundation. Learn to think like a programmer while mastering Python's core concepts.</p>
+                <p class="text-slate-300 mb-4">Start your journey with a solid foundation. Learn to think like a
+                  programmer while mastering Python's core concepts.</p>
                 <div class="grid md:grid-cols-2 gap-4">
                   <div>
                     <h4 class="font-medium text-cyan-300 mb-2">Core Concepts</h4>
@@ -770,7 +790,8 @@
                   </div>
                 </div>
                 <div class="mt-4 p-3 bg-slate-900/60 rounded-lg">
-                  <p class="text-sm text-slate-300"><strong>Project:</strong> Build a simple calculator that handles basic arithmetic operations with input validation.</p>
+                  <p class="text-sm text-slate-300"><strong>Project:</strong> Build a simple calculator that handles
+                    basic arithmetic operations with input validation.</p>
                 </div>
               </div>
             </div>
@@ -784,7 +805,8 @@
               </div>
               <div class="flex-1">
                 <h3 class="text-xl font-semibold mb-2">Data Structures That Matter</h3>
-                <p class="text-slate-300 mb-4">Master the building blocks of programming. Learn when and how to use different data structures effectively.</p>
+                <p class="text-slate-300 mb-4">Master the building blocks of programming. Learn when and how to use
+                  different data structures effectively.</p>
                 <div class="grid md:grid-cols-2 gap-4">
                   <div>
                     <h4 class="font-medium text-blue-300 mb-2">Lists & Operations</h4>
@@ -806,7 +828,8 @@
                   </div>
                 </div>
                 <div class="mt-4 p-3 bg-slate-900/60 rounded-lg">
-                  <p class="text-sm text-slate-300"><strong>Project:</strong> Create a student grade management system that stores student data and calculates averages.</p>
+                  <p class="text-sm text-slate-300"><strong>Project:</strong> Create a student grade management system
+                    that stores student data and calculates averages.</p>
                 </div>
               </div>
             </div>
@@ -820,7 +843,8 @@
               </div>
               <div class="flex-1">
                 <h3 class="text-xl font-semibold mb-2">Functions, Modules & File Handling</h3>
-                <p class="text-slate-300 mb-4">Write reusable, organized code. Learn to break down complex problems into manageable functions and work with files.</p>
+                <p class="text-slate-300 mb-4">Write reusable, organized code. Learn to break down complex problems into
+                  manageable functions and work with files.</p>
                 <div class="grid md:grid-cols-2 gap-4">
                   <div>
                     <h4 class="font-medium text-purple-300 mb-2">Functions & Organization</h4>
@@ -842,7 +866,8 @@
                   </div>
                 </div>
                 <div class="mt-4 p-3 bg-slate-900/60 rounded-lg">
-                  <p class="text-sm text-slate-300"><strong>Projects:</strong> Build a contact book application with file storage and a text file analyzer that counts words and generates statistics.</p>
+                  <p class="text-sm text-slate-300"><strong>Projects:</strong> Build a contact book application with
+                    file storage and a text file analyzer that counts words and generates statistics.</p>
                 </div>
               </div>
             </div>
@@ -856,7 +881,8 @@
               </div>
               <div class="flex-1">
                 <h3 class="text-xl font-semibold mb-2">Error Handling & Advanced Concepts</h3>
-                <p class="text-slate-300 mb-4">Write robust, professional code. Learn to handle errors gracefully and work with more advanced Python features.</p>
+                <p class="text-slate-300 mb-4">Write robust, professional code. Learn to handle errors gracefully and
+                  work with more advanced Python features.</p>
                 <div class="grid md:grid-cols-2 gap-4">
                   <div>
                     <h4 class="font-medium text-green-300 mb-2">Error Management</h4>
@@ -878,7 +904,8 @@
                   </div>
                 </div>
                 <div class="mt-4 p-3 bg-slate-900/60 rounded-lg">
-                  <p class="text-sm text-slate-300"><strong>Project:</strong> Develop a robust file processing application with error handling and logging capabilities.</p>
+                  <p class="text-sm text-slate-300"><strong>Project:</strong> Develop a robust file processing
+                    application with error handling and logging capabilities.</p>
                 </div>
               </div>
             </div>
@@ -892,7 +919,8 @@
               </div>
               <div class="flex-1">
                 <h3 class="text-xl font-semibold mb-2">Real-World Projects & Next Steps</h3>
-                <p class="text-slate-300 mb-4">Apply everything you've learned to build complete applications. Get ready for your next learning phase.</p>
+                <p class="text-slate-300 mb-4">Apply everything you've learned to build complete applications. Get ready
+                  for your next learning phase.</p>
                 <div class="grid md:grid-cols-2 gap-4">
                   <div>
                     <h4 class="font-medium text-orange-300 mb-2">Major Projects</h4>
@@ -914,7 +942,8 @@
                   </div>
                 </div>
                 <div class="mt-4 p-3 bg-slate-900/60 rounded-lg">
-                  <p class="text-sm text-slate-300"><strong>Capstone Project:</strong> Build a complete task management application with user interface, data persistence, and error handling.</p>
+                  <p class="text-sm text-slate-300"><strong>Capstone Project:</strong> Build a complete task management
+                    application with user interface, data persistence, and error handling.</p>
                 </div>
               </div>
             </div>
@@ -947,7 +976,8 @@
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-6">Featured Projects You'll Build</h2>
         <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
-          Apply your Python skills to solve real problems. Each project builds upon previous concepts and results in a portfolio-ready application.
+          Apply your Python skills to solve real problems. Each project builds upon previous concepts and results in a
+          portfolio-ready application.
         </p>
 
         <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -956,7 +986,8 @@
               <i data-lucide="sparkles" class="w-6 h-6 text-blue-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Smart Quiz Engine</h3>
-            <p class="text-slate-300 mb-4">Build an interactive quiz CLI app with scoring, hints and result summary. Learn file handling, data structures, and user input validation.</p>
+            <p class="text-slate-300 mb-4">Build an interactive quiz CLI app with scoring, hints and result summary.
+              Learn file handling, data structures, and user input validation.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">File I/O</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Data Structures</span>
@@ -968,7 +999,8 @@
               <i data-lucide="file-cog" class="w-6 h-6 text-green-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">File Automation Toolkit</h3>
-            <p class="text-slate-300 mb-4">Automate file renaming, sorting and reporting on your own computer. Master OS operations, file system navigation, and batch processing.</p>
+            <p class="text-slate-300 mb-4">Automate file renaming, sorting and reporting on your own computer. Master OS
+              operations, file system navigation, and batch processing.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">OS Module</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Automation</span>
@@ -980,7 +1012,8 @@
               <i data-lucide="globe-2" class="w-6 h-6 text-orange-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Web Data Fetcher</h3>
-            <p class="text-slate-300 mb-4">Use APIs & requests to pull data from the internet and analyse it. Learn HTTP requests, JSON parsing, and basic web scraping concepts.</p>
+            <p class="text-slate-300 mb-4">Use APIs & requests to pull data from the internet and analyse it. Learn HTTP
+              requests, JSON parsing, and basic web scraping concepts.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">APIs</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Requests</span>
@@ -992,7 +1025,8 @@
               <i data-lucide="bar-chart-3" class="w-6 h-6 text-red-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Mini Data Dashboard</h3>
-            <p class="text-slate-300 mb-4">Get hands-on with Pandas to explore and visualise CSV datasets. Learn data manipulation, basic statistics, and matplotlib plotting.</p>
+            <p class="text-slate-300 mb-4">Get hands-on with Pandas to explore and visualise CSV datasets. Learn data
+              manipulation, basic statistics, and matplotlib plotting.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Pandas</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Data Analysis</span>
@@ -1001,7 +1035,8 @@
         </div>
 
         <div class="text-center mt-12">
-          <p class="text-slate-400 text-sm">All projects include complete code, documentation, and deployment instructions</p>
+          <p class="text-slate-400 text-sm">All projects include complete code, documentation, and deployment
+            instructions</p>
         </div>
       </div>
     </section>
@@ -1011,7 +1046,8 @@
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-6">Launch Your Python Career</h2>
         <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
-          Our graduates don't just learn Python — they launch successful careers in tech. Here's what you can expect after completing the program.
+          Our graduates don't just learn Python — they launch successful careers in tech. Here's what you can expect
+          after completing the program.
         </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -1052,7 +1088,8 @@
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-6">Tools & Resources You'll Master</h2>
         <p class="text-center text-slate-300 mb-12 max-w-3xl mx-auto">
-          Learn industry-standard Python tools and development environment. Everything you need is included in your course fee.
+          Learn industry-standard Python tools and development environment. Everything you need is included in your
+          course fee.
         </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -1061,7 +1098,8 @@
               <i data-lucide="code" class="w-6 h-6 text-cyan-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Python 3.11+</h3>
-            <p class="text-slate-300 mb-4">Latest Python version with comprehensive standard library. Learn modern Python syntax and best practices.</p>
+            <p class="text-slate-300 mb-4">Latest Python version with comprehensive standard library. Learn modern
+              Python syntax and best practices.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Core Language</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Standard Library</span>
@@ -1073,7 +1111,8 @@
               <i data-lucide="monitor" class="w-6 h-6 text-purple-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">VS Code</h3>
-            <p class="text-slate-300 mb-4">Professional code editor with Python extensions, debugging tools, and integrated terminal.</p>
+            <p class="text-slate-300 mb-4">Professional code editor with Python extensions, debugging tools, and
+              integrated terminal.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">IDE</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Debugging</span>
@@ -1085,7 +1124,8 @@
               <i data-lucide="database" class="w-6 h-6 text-blue-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Pandas & NumPy</h3>
-            <p class="text-slate-300 mb-4">Essential data science libraries for data manipulation, analysis, and scientific computing.</p>
+            <p class="text-slate-300 mb-4">Essential data science libraries for data manipulation, analysis, and
+              scientific computing.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Data Analysis</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Scientific Computing</span>
@@ -1097,7 +1137,8 @@
               <i data-lucide="globe" class="w-6 h-6 text-green-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Requests & APIs</h3>
-            <p class="text-slate-300 mb-4">HTTP library for API interactions, web scraping, and connecting to web services.</p>
+            <p class="text-slate-300 mb-4">HTTP library for API interactions, web scraping, and connecting to web
+              services.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Web APIs</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">HTTP</span>
@@ -1109,7 +1150,8 @@
               <i data-lucide="folder" class="w-6 h-6 text-orange-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Git & GitHub</h3>
-            <p class="text-slate-300 mb-4">Version control system and code hosting platform. Learn collaboration and code management.</p>
+            <p class="text-slate-300 mb-4">Version control system and code hosting platform. Learn collaboration and
+              code management.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">Version Control</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Collaboration</span>
@@ -1121,7 +1163,8 @@
               <i data-lucide="terminal" class="w-6 h-6 text-red-300"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Command Line</h3>
-            <p class="text-slate-300 mb-4">Essential terminal commands, package management with pip, and environment setup.</p>
+            <p class="text-slate-300 mb-4">Essential terminal commands, package management with pip, and environment
+              setup.</p>
             <div class="text-sm">
               <span class="bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded text-xs">CLI Tools</span>
               <span class="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-xs ml-2">Package Management</span>
@@ -1176,7 +1219,8 @@
 
           <div class="testimonial-slide">
             <p class="text-sm md:text-base text-slate-100 italic mb-3">
-              “I tried YouTube for months. This was the first time I actually finished projects and understood what I wrote.”
+              “I tried YouTube for months. This was the first time I actually finished projects and understood what I
+              wrote.”
             </p>
             <p class="text-sm font-semibold text-slate-200">Neha Singh</p>
             <p class="text-xs text-slate-400">Career Switch to Tech</p>
@@ -1197,10 +1241,10 @@
     <section class="relative py-16">
       <div class="container mx-auto px-6">
         <div
-          class="bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-slate-900/80 border border-cyan-500/30 rounded-3xl px-6 py-10 md:px-10 md:py-12"
-        >
+          class="bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-slate-900/80 border border-cyan-500/30 rounded-3xl px-6 py-10 md:px-10 md:py-12">
           <div class="text-center mb-8">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+            <h2
+              class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
               Ready to Transform Your Career with Python?
             </h2>
             <p class="text-lg text-slate-200/90 max-w-3xl mx-auto mb-6">
@@ -1235,16 +1279,16 @@
               <p class="text-sm text-slate-400 text-center">
                 Free consultation • No commitment required
               </p>
-          </div>
+            </div>
 
-          <div class="mt-8 pt-6 border-t border-slate-700/50">
-            <p class="text-xs text-slate-400 text-center">
-              🎯 <strong>Limited spots available</strong> for our next cohort starting soon.
-              Early applicants get priority access to mentorship sessions.
-            </p>
+            <div class="mt-8 pt-6 border-t border-slate-700/50">
+              <p class="text-xs text-slate-400 text-center">
+                🎯 <strong>Limited spots available</strong> for our next cohort starting soon.
+                Early applicants get priority access to mentorship sessions.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
     </section>
   </main>
 
@@ -1255,7 +1299,8 @@
         <div>
           <h3 class="text-lg font-bold mb-4 text-white">Codechype</h3>
           <p class="text-sm text-slate-400">
-            Your launchpad into the world of technology, powered by project-based learning. Build skills that stay with you.
+            Your launchpad into the world of technology, powered by project-based learning. Build skills that stay with
+            you.
           </p>
         </div>
         <div>
@@ -1293,25 +1338,18 @@
   </footer>
 
   <!-- Back to Top Button -->
-  <button
-    id="backToTop"
+  <button id="backToTop"
     class="hidden fixed bottom-24 right-5 md:right-6 z-40 bg-slate-900/90 border border-cyan-400/60 text-cyan-100 rounded-full p-3 shadow-lg"
-    aria-label="Back to top"
-  >
+    aria-label="Back to top">
     <i data-lucide="arrow-up" class="w-5 h-5"></i>
   </button>
 
   <!-- WhatsApp Floating Button (same as index) -->
-  <a
-    href="https://wa.me/918434457228?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20your%20Python%20course."
-    class="whatsapp-float"
-    target="_blank"
-    aria-label="Chat on WhatsApp"
-  >
+  <a href="https://wa.me/918434457228?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20your%20Python%20course."
+    class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
       <path
-        d="M16.002 3C9.383 3 4 8.383 4 15.002c0 2.636.775 5.101 2.109 7.172L4 29l7.004-2.072A11.9 11.9 0 0016.002 27C22.617 27 28 21.617 28 15.002 28 8.383 22.617 3 16.002 3zm0 22.32a9.287 9.287 0 01-4.73-1.3l-.34-.2-4.158 1.23 1.23-4.047-.22-.34a9.314 9.314 0 01-1.466-5.035c0-5.147 4.186-9.332 9.332-9.332 5.147 0 9.332 4.185 9.332 9.332s-4.185 9.332-9.332 9.332zm5.027-6.972c-.273-.137-1.62-.803-1.872-.893-.252-.093-.435-.137-.616.136-.183.273-.708.894-.867 1.08-.159.183-.32.205-.593.068-.273-.137-1.153-.426-2.197-1.36-.812-.725-1.36-1.62-1.518-1.893-.159-.273-.017-.421.12-.558.123-.123.273-.32.41-.478.136-.159.183-.273.273-.456.09-.183.045-.341-.023-.478-.068-.136-.616-1.483-.845-2.034-.223-.536-.451-.464-.616-.472l-.523-.01c-.182 0-.478.068-.73.341-.252.273-.961.941-.961 2.293s.983 2.66 1.12 2.847c.137.183 1.935 2.958 4.69 4.147.656.283 1.168.452 1.566.58.658.21 1.257.18 1.73.11.527-.078 1.62-.66 1.85-1.298.228-.637.228-1.182.159-1.298-.068-.115-.25-.183-.523-.32z"
-      />
+        d="M16.002 3C9.383 3 4 8.383 4 15.002c0 2.636.775 5.101 2.109 7.172L4 29l7.004-2.072A11.9 11.9 0 0016.002 27C22.617 27 28 21.617 28 15.002 28 8.383 22.617 3 16.002 3zm0 22.32a9.287 9.287 0 01-4.73-1.3l-.34-.2-4.158 1.23 1.23-4.047-.22-.34a9.314 9.314 0 01-1.466-5.035c0-5.147 4.186-9.332 9.332-9.332 5.147 0 9.332 4.185 9.332 9.332s-4.185 9.332-9.332 9.332zm5.027-6.972c-.273-.137-1.62-.803-1.872-.893-.252-.093-.435-.137-.616.136-.183.273-.708.894-.867 1.08-.159.183-.32.205-.593.068-.273-.137-1.153-.426-2.197-1.36-.812-.725-1.36-1.62-1.518-1.893-.159-.273-.017-.421.12-.558.123-.123.273-.32.41-.478.136-.159.183-.273.273-.456.09-.183.045-.341-.023-.478-.068-.136-.616-1.483-.845-2.034-.223-.536-.451-.464-.616-.472l-.523-.01c-.182 0-.478.068-.73.341-.252.273-.961.941-.961 2.293s.983 2.66 1.12 2.847c.137.183 1.935 2.958 4.69 4.147.656.283 1.168.452 1.566.58.658.21 1.257.18 1.73.11.527-.078 1.62-.66 1.85-1.298.228-.637.228-1.182.159-1.298-.068-.115-.25-.183-.523-.32z" />
     </svg>
   </a>
 
@@ -1323,14 +1361,27 @@
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const closeMobileMenuButton = document.getElementById("close-mobile-menu");
     const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+
+    function openMenu(){
+      mobileMenu.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden");
+      mobileMenuButton.setAttribute('aria-expanded','true');
+      if(menuIcon){ menuIcon.setAttribute('data-lucide','x'); lucide.createIcons(); }
+    }
+    function closeMenu(){
+      mobileMenu.classList.add("hidden");
+      document.body.classList.remove("overflow-hidden");
+      mobileMenuButton.setAttribute('aria-expanded','false');
+      if(menuIcon){ menuIcon.setAttribute('data-lucide','menu'); lucide.createIcons(); }
+    }
 
     if (mobileMenuButton && closeMobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
-
-      closeMobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
+      mobileMenuButton.addEventListener("click", openMenu);
+      closeMobileMenuButton.addEventListener("click", closeMenu);
+      // Close when clicking any link in the mobile menu
+      mobileMenu.querySelectorAll('a').forEach(a=>{
+        a.addEventListener('click', closeMenu);
       });
     }
 
@@ -1444,5 +1495,5 @@
     });
   </script>
 </body>
-</html>
 
+</html>
