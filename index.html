@@ -919,11 +919,23 @@ a[href*="wa.me"] svg {
 
             </a>
 
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-blue-200 font-semibold hover:text-white transition">Home</a>
-                <a href="courses.html" class="hover:text-white transition">Courses</a>
-                <a href="about.html" class="hover:text-white transition">About Us</a>
-                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            <nav class="hidden md:flex space-x-2">
+                <a href="index.html" class="group relative px-3 py-2 rounded-lg text-blue-200 font-semibold transition-colors">
+                  <span class="relative z-10">Home</span>
+                  <span class="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/10"></span>
+                </a>
+                <a href="courses.html" class="group relative px-3 py-2 rounded-lg transition-colors">
+                  <span class="relative z-10">Courses</span>
+                  <span class="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/10"></span>
+                </a>
+                <a href="about.html" class="group relative px-3 py-2 rounded-lg transition-colors">
+                  <span class="relative z-10">About Us</span>
+                  <span class="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/10"></span>
+                </a>
+                <a href="contact.html" class="group relative px-3 py-2 rounded-lg transition-colors">
+                  <span class="relative z-10">Contact</span>
+                  <span class="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/10"></span>
+                </a>
             </nav>
 
             <div class="hidden md:block">
